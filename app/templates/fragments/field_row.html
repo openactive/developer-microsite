@@ -1,0 +1,34 @@
+<tr>
+  <td width="300px"  class="table-primary">
+    {% if field.fieldName == 'context' %}
+      @{{field.fieldName}}
+    {% else %}
+      {{field.fieldName}}
+    {% endif %}
+  </td>
+  <td width="300px">
+    {% if field.model %}
+      <a href='/models/{{field.model.replace('#', '').lower()}}'>{{field.model.replace('#', '')}}</a>
+    {% else %}
+      {% if 'ArrayOf' in field.requiredType %}
+      {% set itemtype = field.requiredType.split("#")[1] %}
+        {% if 'schema.org' in itemtype %}
+          {% set itemtype_name = itemtype.replace('http://schema.org/', '') %}
+          Array of <a href="{{itemtype}}" target="_blank">{{itemtype_name}}&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+        {% else %}
+          Array of <a href="/models/{{itemtype}}">{{itemtype}}</a>
+        {% endif %}
+      {% else %}
+        {% if 'schema.org' in field.requiredType %}
+          {% set itemtype_name = field.requiredType.replace('http://schema.org/', '') %}
+          <a href="{{field.requiredType}}" target="_blank">{{itemtype_name}}&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+        {% else %}
+          {{field.requiredType}}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  </td>
+  <td>
+    {{field.description|safe}}
+  </td>
+</tr>

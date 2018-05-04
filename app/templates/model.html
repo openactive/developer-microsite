@@ -1,0 +1,63 @@
+{% extends "base.html"%}
+{% set title = 'Models | ' + model.type %}
+
+{% block mainpanel %}
+<div class="container">
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page"><a href="/models">Models</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{model.type}}</li>
+  </ol>
+</nav>
+
+  <h2>{{model.type}}</h2>
+  <p>{{model.description}}</p>
+  {% if model.derivedFrom %}
+    <p>This model is derived from <a href="{{ model.derivedFrom }}">{{ model.derivedFrom }}</a>.</p>
+  {% endif %}
+  <br />
+
+  {% if model.requiredFields %}
+    <h4>Required fields</h4>
+    <table class="table table-bordered">
+      {% for item in model.requiredFields %}
+          {% set field = model.fields[item] %}
+          {% include 'fragments/field_row.html' %}
+      {% endfor %}
+    </table>
+  {% endif %}
+
+  {% if model.recommendedFields %}
+    <h4>Recommended fields</h4>
+    <table class="table table-bordered">
+      {% for item in model.recommendedFields %}
+          {% set field = model.fields[item] %}
+          {% include 'fragments/field_row.html' %}
+      {% endfor %}
+    </table>
+  {% endif %}
+
+  {% if model.optionalFields %}
+  <h4>Optional fields</h4>
+  <table class="table table-bordered">
+    {% for item in model.optionalFields %}
+      {% set field = model.fields[item] %}
+      {% include 'fragments/field_row.html' %}
+    {% endfor %}
+  </table>
+  {% endif %}
+
+<h4>Example</h4>
+<div class="well">
+  <pre><code class="json">{{example}}</code></pre>
+</div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+  <link rel="stylesheet" href="/static/styles/googlecode.css">
+  <script src="/static/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+{% endblock %}

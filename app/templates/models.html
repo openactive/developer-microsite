@@ -1,0 +1,16 @@
+{% extends "base.html"%}
+{% set title = 'Models'%}
+
+{% block mainpanel %}
+<div class="container">
+
+  <h2>Models</h2>
+  <br />
+  <ul>
+  {% for model in models %}
+    <li> <a href="/models/{{model.lower()}}">{{model}}</a> </li>
+  {% endfor %}
+  </ul>
+
+</div>
+{% endblock %}

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>OpenActive Developers | {{title}} </title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <!-- Font awesome icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
+
+    {#
+    <!--link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,300" -->
+    <!--link rel="stylesheet" href="https://www.openactive.io/resources/main.css" -->
+    #}
+
+    <style>
+    {% block styles %}
+      body {
+        padding-top: 5rem;
+        color: #5A5A5A;
+      }
+    {% endblock %}
+    ol.breadcrumb {
+      background-color: transparent;
+      padding-left: 0rem;
+    }
+
+    figure {
+      width: 80px;
+      margin-top: 5px;
+      margin-left: 5px;
+      margin-right: 15px;
+      margin-bottom: -5px
+    }
+
+    .navbar {
+      border-bottom: 2px #3B3089 solid;
+      background-color: #fff;
+    }
+
+    .first-item {
+      margin-left: 20px
+    }
+
+    h1, h2, h3, h4, h5 {
+      color: #3B3089
+    }
+
+    a {
+      color: #253882;
+    }
+
+    .main {
+      margin-top: 20px;
+    }
+
+    .nav-link, .nav-item {
+      color: #253882 !important;
+    }
+
+    .btn-primary {
+      background-color: #832b94;
+      color: #fff;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #fc9b9b;
+    }
+    </style>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-light fixed-top container">
+      {% include 'fragments/logo.html' %}
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item first-item">
+            <a class="nav-link" href="/specifications">Specifications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/models">Models</a>
+          </li>
+          {#
+          <li class="nav-item">
+            <a class="nav-link" href="/documentation/1.0">API Documentation</a>
+          </li>
+          #}
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="main">
+        {% block mainpanel %}
+        {% endblock %}
+    </main><!-- /.container -->
+    {% block scripts %}
+    {% endblock %}
+  </body>
+</html>

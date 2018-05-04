@@ -1,0 +1,47 @@
+{% extends "base.html"%}
+{% set title = 'Welcome'%}
+
+{% block styles %}
+body {
+  padding-top: 3.5rem;
+}
+{% endblock %}
+
+{% block mainpanel %}
+
+<main role="main">
+
+  <div class="jumbotron container">
+    <div class="container">
+      <h1 class="display-3">Hello, world!</h1>
+      <p>This is the developer area for OpenActive. Whether you're a consumer of activity data or a provider, this is the place to learn about the underlying data models, become a part of the specification process, check your feed or read the API documentation.</p>
+      <p><a class="btn btn-primary btn-lg" href="/getting-started" role="button">Learn more &raquo;</a></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Data models</h2>
+        <p>OpenActive's data models for activity data build on excellent community work from SKOS and Schema.org.</p>
+        <p><a class="btn btn-secondary" href="/models" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Specifications</h2>
+        <p>OpenActive's specifications are created in an open and collaborative process. You can view the current and past versions of the specifications, get involved in the process, create issues and read editor's drafts for the next versions.</p>
+        <p><a class="btn btn-secondary" href="/specifications" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>API Documentation</h2>
+        <p>Explore the documentation for the OpenActive API. Whether you're a provider or consumer, this is an excellent place to start.</p>
+        <p><a class="btn btn-secondary" href="/documentation/1.0" role="button">View details &raquo;</a></p>
+      </div>
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>
+
+{% endblock %}

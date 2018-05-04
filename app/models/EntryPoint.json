@@ -1,0 +1,32 @@
+{
+  "type": "EntryPoint",
+  "sameAs": null,
+  "derivedFrom": "http://schema.org/EntryPoint",
+  "hasId": false,
+  "requiredFields": [],
+  "fields": {
+    "encodingType": {
+      "fieldName": "encodingType",
+      "sameAs": "http://schema.org/encodingType",
+      "requiredType": "http://schema.org/Text",
+      "requiredContent": "application/vnd.openactive.v0.4+json",
+      "example": "application/vnd.openactive.v0.4+json",
+      "description": "TODO"
+    },
+    "httpMethod": {
+      "fieldName": "httpMethod",
+      "sameAs": "http://schema.org/httpMethod",
+      "requiredType": "http://schema.org/Text",
+      "example": "POST",
+      "description": "TODO"
+    },
+    "url": {
+      "fieldName": "url",
+      "sameAs": "http://schema.org/url",
+      "requiredType": "http://schema.org/url",
+      "example": "https://example.com/orders",
+      "description": "TODO"
+    }
+
+  }
+}

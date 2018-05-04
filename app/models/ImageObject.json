@@ -1,0 +1,21 @@
+{
+  "type": "ImageObject",
+  "sameAs": null,
+  "derivedFrom": "http://schema.org/ImageObject",
+  "hasId": false,
+  "requiredFields":["url"],
+  "fields": {
+    "thumbnail": {
+      "fieldName": "thumbnail",
+      "requiredType": "http://schema.org/url",
+      "example": "http://www.fusion-lifestyle.com/media/global/activities/thumb/bodycombat_2018_01_04_14_52_57.png",
+      "description": "TODO"
+    },
+    "url": {
+      "fieldName": "url",
+      "requiredType": "http://schema.org/url",
+      "example": "http://www.fusion-lifestyle.com/media/global/activities/thumb/bodycombat_2018_01_04_14_52_57.png",
+      "description": "TODO"
+    }
+  }
+}

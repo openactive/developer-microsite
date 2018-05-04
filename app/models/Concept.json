@@ -1,0 +1,27 @@
+{
+  "type": "Concept",
+  "sameAs": null,
+  "derivedFrom": "https://www.w3.org/TR/skos-primer/#secconcept",
+  "hasId": false,
+  "requiredFields": [],
+  "fields": {
+    "inScheme": {
+      "fieldName": "inScheme",
+      "requiredType": "http://schema.org/url",
+      "example": "https://example.com/reference/activities",
+      "description": "TODO"
+    },
+    "prefLabel": {
+      "fieldName": "prefLabel",
+      "requiredType": "http://schema.org/Text",
+      "example": "Speedball",
+      "description": "TODO"
+    },
+    "identifier": {
+      "fieldName": "identifier",
+      "requiredType": "TODO",
+      "example": 20,
+      "description": "TODO"
+    }
+  }
+}

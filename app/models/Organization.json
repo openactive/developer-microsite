@@ -1,0 +1,55 @@
+{
+  "type": "Organization",
+  "sameAs": null,
+  "derivedFrom": "http://schema.org/Organization",
+  "hasId": true,
+  "idFormat": "http://schema.org/url",
+  "sampleId": "https://example.com/organization",
+  "requiredFields": [],
+  "fields": {
+    "email": {
+      "fieldName": "email",
+      "requiredType": "http://schema.org/Text",
+      "example": "",
+      "description": "TODO"
+    },
+    "image": {
+      "fieldName": "image",
+      "requiredType": "http://schema.org/url",
+      "example": "http://www.speedball-world.com",
+      "description": "TODO"
+    },
+    "logo": {
+      "fieldName": "logo",
+      "requiredType": "http://schema.org/url",
+      "example": "",
+      "description": "TODO"
+    },
+    "name": {
+      "fieldName": "name",
+      "sameAs": "http://schema.org/name",
+      "requiredType": "http://schema.org/Text",
+      "example": "Central Speedball Association",
+      "description": "TODO"
+    },
+    "sameAs": {
+      "fieldName": "sameAs",
+      "requiredType": "ArrayOf#http://schema.org/url",
+      "example": "[]",
+      "description": "TODO"
+    },
+    "telephone": {
+      "fieldName": "telephone",
+      "sameAs": "http://schema.org/name",
+      "requiredType": "http://schema.org/Text",
+      "example": "",
+      "description": "TODO"
+    },
+    "url": {
+      "fieldName": "url",
+      "requiredType": "http://schema.org/url",
+      "example": "http://www.speedball-world.com",
+      "description": "TODO"
+    }
+  }
+}

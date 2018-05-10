@@ -5,50 +5,50 @@
   "derivedFrom": "http://schema.org/Person",
   "hasId": true,
   "idFormat": "http://schema.org/url",
-  "sampleId": "https://example.com/person",
+  "sampleId": "https://example.com/person/",
   "requiredFields": [],
   "fields": {
     "email": {
       "fieldName": "email",
       "sameAs": "http://schema.org/givenName",
       "requiredType": "http://schema.org/Text",
-      "example": "Daley",
-      "description": "#TODO"
+      "example": "daley.thompson@trackandfield.game",
+      "description": ["TODO"]
     },
     "familyName": {
       "fieldName": "familyName",
       "sameAs": "http://schema.org/familyName",
       "requiredType": "http://schema.org/Text",
       "example": "Thompson",
-      "description": "#TODO"
+      "description": ["TODO"]
     },
     "gender": {
       "fieldName": "gender",
       "sameAs": "http://schema.org/gender",
       "requiredType": "http://schema.org/Text",
       "example": "",
-      "description": "#TODO"
+      "description": ["TODO"]
     },
     "givenName": {
       "fieldName": "givenName",
       "sameAs": "http://schema.org/givenName",
       "requiredType": "http://schema.org/Text",
       "example": "Daley",
-      "description": "#TODO"
+      "description": ["TODO"]
     },
     "name": {
       "fieldName": "name",
       "sameAs": "http://schema.org/name",
       "requiredType": "http://schema.org/Text",
       "example": "Daley Thompson",
-      "description": "#TODO"
+      "description": ["TODO"]
     },
     "url": {
       "fieldName": "url",
       "sameAs": "http://schema.org/url",
       "requiredType": "http://schema.org/url",
       "example": "",
-      "description": "#TODO"
+      "description": ["TODO"]
     }
   }
 }

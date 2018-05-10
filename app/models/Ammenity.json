@@ -7,19 +7,19 @@
       "fieldName": "name",
       "requiredType": "http://schema.org/Text",
       "example": "Changing Facilities",
-      "description": "TODO"
+      "description": ["TODO"]
     },
     "type": {
       "fieldName": "type",
       "requiredType": "http://schema.org/Text",
       "example": "ChangingFacilities",
-      "description": "TODO"
+      "description": ["TODO"]
     },
     "value": {
       "fieldName": "value",
       "requiredType": "http://schema.org/Boolean",
       "example": false,
-      "description": "TODO"
+      "description": ["TODO"]
     }
   }
 }

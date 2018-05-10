@@ -20,7 +20,7 @@
 
   {% if model.requiredFields %}
     <h4>Required fields</h4>
-    <table class="table table-bordered">
+    <table class="table table-bordered" width="100%">
       {% for item in model.requiredFields %}
           {% set field = model.fields[item] %}
           {% include 'fragments/field_row.html' %}

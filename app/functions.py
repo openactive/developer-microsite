@@ -1,5 +1,6 @@
 from flask import Markup, render_template
 import markdown
+import json
 
 import constants
 import logging
@@ -15,7 +16,7 @@ def build_full_model(model):
         model['fields']['type'] = {
             'fieldName': 'type',
             'requiredType': 'http://schema.org/Text',
-            'description': 'The type of object, in this case ' + model['type'],
+            'description': ['The type of object, in this case ' + model['type']],
             'example': model['type'],
             'requiredContent': model['type']
         }
@@ -24,13 +25,15 @@ def build_full_model(model):
         model['fields']['id'] = {
             'fieldName': 'id',
             'requiredType': 'http://schema.org/url',
-            'description': 'A unique url based identifier for the record',
+            'description': ['A unique url based identifier for the record'],
             'example': ''
         }
+        if model['hasId'] and model['sampleId']:
+            model['fields']['id']['example'] = model['sampleId'] + '1234'
         model['fields']['identifier'] = {
             'fieldName': 'identifier',
-            'description': 'A unique identifier for the record',
-            'example': ''
+            'description': ['A unique identifier for the record'],
+            'example': '1234'
         }
         model['requiredFields'].append('id')
     if not 'recommendedFields' in model:
@@ -43,8 +46,11 @@ def build_full_model(model):
     model['recommendedFields'] = sorted(model['recommendedFields'])
     model['optionalFields'] = sorted(model['optionalFields'])
     for field in model['fields']:
-        model['fields'][field]['description'] = Markup(markdown.markdown(
-            model['fields'][field]['description'], extensions=['markdown.extensions.nl2br']))
+        model['fields'][field]['markdown'] = []
+        for item in model['fields'][field]['description']:
+            model['fields'][field]['markdown'].append(Markup(markdown.markdown(item)))
+        model['fields'][field]['inlineExample'] = json.dumps(
+            model['fields'][field]['example'], indent=4, sort_keys=True)
     return model
 
 

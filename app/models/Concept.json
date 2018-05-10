@@ -9,19 +9,19 @@
       "fieldName": "inScheme",
       "requiredType": "http://schema.org/url",
       "example": "https://example.com/reference/activities",
-      "description": "TODO"
+      "description": ["TODO"]
     },
     "prefLabel": {
       "fieldName": "prefLabel",
       "requiredType": "http://schema.org/Text",
       "example": "Speedball",
-      "description": "TODO"
+      "description": ["TODO"]
     },
     "identifier": {
       "fieldName": "identifier",
       "requiredType": "TODO",
       "example": 20,
-      "description": "TODO"
+      "description": ["TODO"]
     }
   }
 }

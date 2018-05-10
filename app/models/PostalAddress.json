@@ -10,35 +10,35 @@
         "sameAs": "http://schema.org/addressCountry",
         "requiredType": "http://schema.org/Text",
         "example": "GB",
-        "description": "TODO"
+        "description": ["TODO"]
       },
       "addressLocality": {
         "fieldName": "addressLocality",
         "sameAs": "http://schema.org/addressLocality",
         "requiredType": "http://schema.org/Text",
         "example": "Shoreditch",
-        "description": "TODO"
+        "description": ["TODO"]
       },
       "addressRegion": {
         "fieldName": "addressRegion",
         "sameAs": "http://schema.org/addressRegion",
         "requiredType": "http://schema.org/Text",
         "example": "London",
-        "description": "TODO"
+        "description": ["TODO"]
       },
       "postalCode": {
         "fieldName": "postalCode",
         "sameAs": "http://schema.org/postalCode",
         "requiredType": "http://schema.org/Text",
         "example": "EC2A 4JE",
-        "description": "TODO"
+        "description": ["TODO"]
       },
       "streetAddress": {
         "fieldName": "streetAddress",
         "sameAs": "http://schema.org/streetAddress",
         "requiredType": "http://schema.org/Text",
         "example": "Open Data Institute, Floor 3, 65 Clifton St",
-        "description": "TODO"
+        "description": ["TODO"]
       }
   }
 }

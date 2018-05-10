@@ -11,25 +11,25 @@
       "fieldName": "name",
       "requiredType": "http://schema.org/Text",
       "example": "HSBC UK Let’s Ride",
-      "description": "TODO"
+      "description": ["TODO","This is line two"]
     },
     "description": {
       "fieldName": "description",
       "requiredType": "http://schema.org/Text",
-      "example": "City Rides are fun days out where cyclists take over the streets of a town or city. Riding on roads normally full of cars is an unforgettable experience. There’s loads of other stuff going on too, from music and market stalls, to extreme cycling and competitions.",
-      "description": "TODO"
+      "example": "City Rides are fun days out where cyclists take over the streets of a town or city.",
+      "description": ["TODO"]
     },
     "url": {
       "fieldName": "url",
       "requiredType": "http://schema.org/url",
       "example": "http://bclr.uat.rroom.net/events",
-      "description": "TODO"
+      "description": ["TODO"]
     },
     "logo": {
       "fieldName": "logo",
       "requiredType": "http://schema.org/url",
-      "example": "http://media.bclr.uat.rroom.net/view/afb09c56e6fd90144f5248af7e99a0d3/CityRide_Full_Colour_sRGB.svg",
-      "description": "TODO"
+      "example": "http://example.com/images/CityRide_Full_Colour_sRGB.svg",
+      "description": ["TODO"]
     }
   }
 }

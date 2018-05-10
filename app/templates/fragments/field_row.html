@@ -1,12 +1,12 @@
 <tr>
-  <td width="300px"  class="table-primary">
+  <td width="250px"  class="table-primary">
     {% if field.fieldName == 'context' %}
       @{{field.fieldName}}
     {% else %}
       {{field.fieldName}}
     {% endif %}
   </td>
-  <td width="300px">
+  <td width="100px">
     {% if field.model %}
       <a href='/models/{{field.model.replace('#', '').lower()}}'>{{field.model.replace('#', '')}}</a>
     {% else %}
@@ -29,6 +29,12 @@
     {% endif %}
   </td>
   <td>
-    {{field.description|safe}}
+    {% for item in field.markdown %}
+      <div>{{item|safe}}</div>
+    {% endfor %}
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">{{field.inlineExample}}</code></pre>
+    </div>
   </td>
 </tr>

@@ -1,17 +1,13 @@
-{% extends "base.html"%}
-{% set title = 'Welcome'%}
-
-{% block styles %}
+Welcome
+---
+<style>
 body {
   padding-top: 3.5rem;
 }
-{% endblock %}
-
-{% block mainpanel %}
-
+</style>
 <main role="main">
 
-  <div class="jumbotron container">
+  <div class="jumbotron">
     <div class="container">
       <h1 class="display-3">Hello, world!</h1>
       <p>This is the developer area for OpenActive. Whether you're a consumer of activity data or a provider, this is the place to learn about the underlying data models, become a part of the specification process, check your feed or read the API documentation.</p>
@@ -43,5 +39,3 @@ body {
   </div> <!-- /container -->
 
 </main>
-
-{% endblock %}

@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-md navbar-light fixed-top container">
+  {% include 'fragments/logo.html' %}
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      {% for item in navbar_items %}
+        {% if loop.first %}
+          <li class="nav-item first-item">
+            <a class="nav-link" href="{{item.path}}">{{item.text}}</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{item.path}}">{{item.text}}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</nav>

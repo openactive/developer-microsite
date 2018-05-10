@@ -1,6 +1,13 @@
-import logging
+from flask import Markup, render_template
 import markdown
-from flask import Markup
+
+import constants
+import logging
+
+
+def render_view(viewname, params):
+    params['navbar_items'] = constants.navbar_items
+    return render_template(viewname, **params)
 
 
 def build_full_model(model):

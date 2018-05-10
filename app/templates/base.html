@@ -77,29 +77,8 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-md navbar-light fixed-top container">
-      {% include 'fragments/logo.html' %}
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item first-item">
-            <a class="nav-link" href="/specifications">Specifications</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/models">Models</a>
-          </li>
-          {#
-          <li class="nav-item">
-            <a class="nav-link" href="/documentation/1.0">API Documentation</a>
-          </li>
-          #}
-        </ul>
-      </div>
-    </nav>
-
+    {% include 'fragments/navbar.html' %}
     <main role="main" class="main">
         {% block mainpanel %}
         {% endblock %}

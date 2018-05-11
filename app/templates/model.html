@@ -11,13 +11,27 @@
   </ol>
 </nav>
 
-  <h2>{{model.type}}</h2>
-  <p>{{model.description}}</p>
+  <h1>{{model.type}}</h1>
   {% if model.derivedFrom %}
     <p>This model is derived from <a href="{{ model.derivedFrom }}">{{ model.derivedFrom }}</a>.</p>
   {% endif %}
-  <br />
+  <hr />
 
+  {% if model.description %}
+    {% for section in model.description.sections %}
+      {% if section.title %}
+        <h3>{{section.title}}</h3>
+      {% endif %}
+      {% for paragraph in section.markdown %}
+        {{paragraph | safe}}
+      {% endfor %}
+    {% endfor %}
+    <hr />
+  {% endif %}
+
+
+  <h2>Fields</h2>
+  <br />
   {% if model.requiredFields %}
     <h4>Required fields</h4>
     <table class="table table-bordered" width="100%">
@@ -48,7 +62,24 @@
   </table>
   {% endif %}
 
-<h4>Example</h4>
+<h2>Examples</h2>
+<br />
+
+{% if model.namedExamples %}
+  {% for namedExample in model.namedExamples %}
+    <h4>{{namedExample.title}}</h4>
+    {% for paragraph in namedExample.markdown %}
+      {{paragraph | safe}}
+    {% endfor %}
+    <div class="well">
+      <pre><code class="json">{{namedExample.example}}</code></pre>
+    </div>
+    <br />
+  {% endfor %}
+{% endif %}
+
+
+<h4>Complete Example</h4>
 <div class="well">
   <pre><code class="json">{{example}}</code></pre>
 </div>

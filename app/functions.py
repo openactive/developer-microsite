@@ -47,10 +47,24 @@ def build_full_model(model):
     model['optionalFields'] = sorted(model['optionalFields'])
     for field in model['fields']:
         model['fields'][field]['markdown'] = []
-        for item in model['fields'][field]['description']:
-            model['fields'][field]['markdown'].append(Markup(markdown.markdown(item)))
+        for paragraph in model['fields'][field]['description']:
+            model['fields'][field]['markdown'].append(Markup(markdown.markdown(paragraph)))
         model['fields'][field]['inlineExample'] = json.dumps(
             model['fields'][field]['example'], indent=4, sort_keys=True)
+    if 'description' in model and model['description'] is not None:
+        for section in model['description']['sections']:
+            section['markdown'] = []
+            for paragraph in section['paragraphs']:
+                section['markdown'].append(
+                    Markup(markdown.markdown(paragraph)))
+    if 'namedExamples' in model and model['namedExamples'] is not None:
+        for example in model['namedExamples']:
+            example['markdown'] = []
+            for paragraph in example['description']:
+                example['markdown'].append(
+                    Markup(markdown.markdown(paragraph)))
+            example['example'] = json.dumps(
+                example['example'], indent=4, sort_keys=True)
     return model
 
 

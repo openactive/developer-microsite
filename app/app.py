@@ -43,12 +43,12 @@ def models_home():
 
 @app.route("/models/<model>")
 def models(model):
-    try:
-        models = json.loads(open('models/model_list.json', 'r').read())['models']
-        model_file = 'models/{modelname}.json'.format(modelname=models[model.lower()]['modelName'])
-        model = json.loads(open(model_file, 'r').read())
-        model = functions.build_full_model(model)
-        example = functions.build_example_json(model)
-        return functions.render_view('model.html', {'model': model, 'example': json.dumps(example, indent=4, sort_keys=True)})
-    except:
-        return "404"
+    #    try:
+    models = json.loads(open('models/model_list.json', 'r').read())['models']
+    model_file = 'models/{modelname}.json'.format(modelname=models[model.lower()]['modelName'])
+    model = json.loads(open(model_file, 'r').read())
+    model = functions.build_full_model(model)
+    example = functions.build_example_json(model)
+    return functions.render_view('model.html', {'model': model, 'example': json.dumps(example, indent=4, sort_keys=True)})
+#    except:
+#        return "404"

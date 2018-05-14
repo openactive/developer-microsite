@@ -21,12 +21,12 @@ def content_handler(view='index'):
     if view in constants.content_items:
         try:
             filepath = 'content/{view}.md'.format(view=view)
-            view_contents = open(filepath, 'r').read()
+            view_contents = functions.read_file(filepath, json_format=False)
             title = view_contents.split('---')[0]
             content = Markup(markdown.markdown(view_contents.split('---')[1]))
         except:
             filepath = 'content/{view}.html'.format(view=view)
-            view_contents = open(filepath, 'r').read()
+            view_contents = functions.read_file(filepath, json_format=False)
             title = view_contents.split('---')[0]
             content = view_contents.split('---')[1]
         return functions.render_view('content.html', {'title': title, 'content': content})
@@ -36,19 +36,19 @@ def content_handler(view='index'):
 
 @app.route("/models")
 def models_home():
-    file_to_open = 'models/model_list.json'
-    models = json.loads(open(file_to_open, 'r').read())['models_order']
+    filepath = 'models/model_list.json'
+    models = functions.read_file(filepath, json_format=True)['models_order']
     return functions.render_view('models.html', {'models': models})
 
 
 @app.route("/models/<model>")
 def models(model):
-    #    try:
-    models = json.loads(open('models/model_list.json', 'r').read())['models']
-    model_file = 'models/{modelname}.json'.format(modelname=models[model.lower()]['modelName'])
-    model = json.loads(open(model_file, 'r').read())
-    model = functions.build_full_model(model)
-    example = functions.build_example_json(model)
-    return functions.render_view('model.html', {'model': model, 'example': json.dumps(example, indent=4, sort_keys=True)})
-#    except:
-#        return "404"
+    try:
+        models = functions.read_file('models/model_list.json', json_format=True)['models']
+        filepath = 'models/{modelname}.json'.format(modelname=models[model.lower()]['modelName'])
+        model = functions.read_file(filepath, json_format=True)
+        model = functions.build_full_model(model)
+        example = functions.build_example_json(model)
+        return functions.render_view('model.html', {'model': model, 'example': json.dumps(example, indent=4, sort_keys=True)})
+    except:
+        return "404"

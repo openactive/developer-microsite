@@ -6,7 +6,7 @@
       {{field.fieldName}}
     {% endif %}
   </td>
-  <td width="100px">
+  <td width="150px">
 
     {% if field.model %}
       {% set thismodel = field.model %}
@@ -19,23 +19,23 @@
     {% endif %}
 
     {% if field.alternativeModels %}
-      <div>OR</div>
+      <div class="pale">OR</div>
       {% for alternativeModel in field.alternativeModels %}
         {% set thismodel = alternativeModel %}
         {% include "fragments/model_link.html"%}
         {% if not loop.last %}
-        <div>OR</div>
+        <div class="pale">OR</div>
         {% endif %}
       {% endfor %}
     {% endif %}
 
     {% if field.alternativeTypes %}
-      <div>OR</div>
+      <div class="pale">OR</div>
       {% for alternativeType in field.alternativeTypes %}
         {% set thistype = alternativeType %}
         {% include "fragments/type_link.html"%}
         {% if not loop.last %}
-        <div>OR</div>
+        <div class="pale">OR</div>
         {% endif %}
         {% endfor %}
     {% endif %}

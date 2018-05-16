@@ -7,7 +7,10 @@
   "idFormat": "http://schema.org/url",
   "sampleId": "https://example.com/event/",
   "requiredFields": ["context","activity","location","name","url"],
-  "requiredOptions":[["startDate","schedule"]],
+  "requiredOptions":[
+    {"description":["While these properties are marked as optional, a data publisher must provide either a schema:startDate or specify a oa:schedule for an event."],
+      "options": ["startDate","schedule"]
+    }],
   "recommendedFields": ["description","duration","organizer","eventStatus","category"],
   "inSpec": ["id","identifier","url","name","description","image","startDate","endDate","duration","location","organizer","contributor","maximumAttendeeCapacity","remainingAttendeeCapacity","eventStatus","subEvent","superEvent","schedule","activity","category","ageRange","genderRestriction","programme","attendeeInstructions","leader","accessibilitySupport","accessibilityInformation","isCoached","level","meetingPoint"],
   "fields": {
@@ -285,15 +288,15 @@
     },
     "schedule": {
       "fieldName": "schedule",
-      "requiredType": "TODO",
-      "description": ["A schedule defines a repeating time period used to describe a regularly occurring Event. **Note: this is a draft Schema.org property. See https://github.com/openactive/modelling-opportunity-data/issues/2 for discussion."],
+      "model": "#Schedule",
+      "description": ["A schedule defines a repeating time period used to describe a regularly occurring Event.","**Note: this is a draft Schema.org property. See https://github.com/openactive/modelling-opportunity-data/issues/2 for discussion."],
       "example": "TODO"
     },
     "startDate": {
       "fieldName": "startDate",
       "requiredType": "http://schema.org/DateTime",
       "standard": "$ISO8601DateTime",
-      "description": ["The start date and time of the event. Can be specified as a schema:Date or  schema:DateTime.","While this property is marked as optional, a data publisher must provide either a schema:startDate or specify a oa:schedule for an event."],
+      "description": ["The start date and time of the event. Can be specified as a schema:Date or schema:DateTime."],
       "example": "2018-01-27T12:00:00Z"
     },
     "url": {

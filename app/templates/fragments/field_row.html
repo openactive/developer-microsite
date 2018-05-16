@@ -29,9 +29,8 @@
     {% endif %}
   </td>
   <td>
-    {% for item in field.markdown %}
-      {{item|safe}}
-    {% endfor %}
+    {% set paragraphs = field.markdown %}
+    {% include "fragments/markdown_paragraphs.html" %}
     <h6>Example</h6>
     <div class="well">
       <pre><code class="json">{{field.inlineExample}}</code></pre>

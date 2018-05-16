@@ -44,18 +44,20 @@ def build_full_model(model):
             'example': '1234'
         }
         model['requiredFields'].append('id')
-    if not 'recommendedFields' in model:
-        model['recommendedFields'] = []
-    if not 'requiredFields' in model:
-        model['requiredFields'] = []
-    model['optionalFields'] = [field for field in model['fields'] if field
-                               not in model['requiredFields'] and field not in model['recommendedFields']]
-    model['requiredFields'] = sorted(model['requiredFields'])
-    model['recommendedFields'] = sorted(model['recommendedFields'])
-    model['optionalFields'] = sorted(model['optionalFields'])
+    model = build_field_arrays(model)
+    model = build_option_html_from_markdown(model)
     model = build_field_description_html_from_markdown(model)
     model = build_description_html_from_markdown(model)
     model = build_named_examples(model)
+    return model
+
+
+def build_option_html_from_markdown(model):
+    if 'requiredOptions' in model and model['requiredOptions'] is not None:
+        for option in model['requiredOptions']:
+            option['markdown'] = []
+            for paragraph in option['description']:
+                option['markdown'].append(Markup(markdown.markdown(paragraph)))
     return model
 
 
@@ -88,6 +90,26 @@ def build_description_html_from_markdown(model):
             for paragraph in section['paragraphs']:
                 section['markdown'].append(
                     Markup(markdown.markdown(paragraph)))
+    return model
+
+
+def build_field_arrays(model):
+    if not 'recommendedFields' in model:
+        model['recommendedFields'] = []
+    if not 'requiredFields' in model:
+        model['requiredFields'] = []
+    if not 'optionSetFields' in model:
+        model['optionSetFields'] = []
+    if 'requiredOptions' in model:
+        for option in model['requiredOptions']:
+            for field in option['options']:
+                if field not in model['optionSetFields']:
+                    model['optionSetFields'].append(field)
+    model['optionalFields'] = [field for field in model['fields'] if field
+                               not in model['requiredFields'] and field not in model['recommendedFields'] and field not in model['optionSetFields']]
+    model['requiredFields'] = sorted(model['requiredFields'])
+    model['recommendedFields'] = sorted(model['recommendedFields'])
+    model['optionalFields'] = sorted(model['optionalFields'])
     return model
 
 

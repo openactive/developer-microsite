@@ -7,26 +7,39 @@
     {% endif %}
   </td>
   <td width="100px">
+
     {% if field.model %}
-      <a href='/models/{{field.model.replace('#', '').lower()}}'>{{field.model.replace('#', '')}}</a>
-    {% else %}
-      {% if 'ArrayOf' in field.requiredType %}
-      {% set itemtype = field.requiredType.split("#")[1] %}
-        {% if 'schema.org' in itemtype %}
-          {% set itemtype_name = itemtype.replace('http://schema.org/', '') %}
-          Array of <a href="{{itemtype}}" target="_blank">{{itemtype_name}}&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
-        {% else %}
-          Array of <a href="/models/{{itemtype}}">{{itemtype}}</a>
-        {% endif %}
-      {% else %}
-        {% if 'schema.org' in field.requiredType %}
-          {% set itemtype_name = field.requiredType.replace('http://schema.org/', '') %}
-          <a href="{{field.requiredType}}" target="_blank">{{itemtype_name}}&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
-        {% else %}
-          {{field.requiredType}}
-        {% endif %}
-      {% endif %}
+      {% set thismodel = field.model %}
+      {% include "fragments/model_link.html"%}
     {% endif %}
+
+    {% if field.requiredType %}
+      {% set thistype = field.requiredType %}
+      {% include "fragments/type_link.html"%}
+    {% endif %}
+
+    {% if field.alternativeModels %}
+      <div>OR</div>
+      {% for alternativeModel in field.alternativeModels %}
+        {% set thismodel = alternativeModel %}
+        {% include "fragments/model_link.html"%}
+        {% if not loop.last %}
+        <div>OR</div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    {% if field.alternativeTypes %}
+      <div>OR</div>
+      {% for alternativeType in field.alternativeTypes %}
+        {% set thistype = alternativeType %}
+        {% include "fragments/type_link.html"%}
+        {% if not loop.last %}
+        <div>OR</div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+
   </td>
   <td>
     {% set paragraphs = field.markdown %}

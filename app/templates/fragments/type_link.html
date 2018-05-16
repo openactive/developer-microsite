@@ -1,0 +1,12 @@
+{% if 'ArrayOf' in thistype %}
+  {% set itemtype = thistype.split("#")[1] %}
+  {% set itemtype_name = itemtype.replace('http://schema.org/', '') %}
+  Array of <a href="{{itemtype}}" target="_blank">{{itemtype_name}}&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+{% else %}
+  {% if 'schema.org' in thistype %}
+    {% set itemtype_name = thistype.replace('http://schema.org/', '') %}
+    <a href="{{thistype}}" target="_blank">{{itemtype_name}}&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  {% else %}
+    {{thistype}}
+  {% endif %}
+{% endif %}

@@ -34,6 +34,8 @@
     "activity":{
       "fieldName": "activity",
       "model": "#Concept",
+      "alternativeModels": ["ArrayOf#Concept"],
+      "alternativeTypes": ["http://schema.org/Text", "ArrayOf#http://schema.org/Text"],
       "context": "!activity",
       "description": ["Specifies the physical activity or activities that will take place during an event"],
       "example":
@@ -71,6 +73,7 @@
     },
     "contributor":{
       "fieldName": "contributor",
+      "model": "#Person",
       "description": ["TODO"],
       "example": "TODO"
     },
@@ -102,6 +105,7 @@
     },
     "eventSchedule": {
       "fieldName": "eventSchedule",
+      "model": "#Schedule",
       "description": ["TODO"],
       "example": "TODO"
     },
@@ -175,6 +179,8 @@
     "location": {
       "fieldName": "location",
       "model":"#Place",
+      "alternativeModels": ["#PostalAddress"],
+      "alternativeTypes": ["http://schema.org/Text"],
       "description": ["The location at which the event will take place. Or, in the case of events that may span multiple locations, the initial meeting or starting point.","It is recommended that locations should be specified as a [Place](/models/place) complete with a fully described geographic location and/or address.\r\n\rIf only an address is available then this should be described as a [PostalAddress](/models/postaladdress).","Applications may use [schema:Text](http://schema.org/Text) to provide a more general description of a location (\"In Victoria Park, near the lake\"), but this is not recommended: consuming applications will be unable to help users discover opportunities based on their location."],
       "example":
         {
@@ -237,7 +243,7 @@
     "organizer": {
       "fieldName": "organizer",
       "model": "#Organization",
-      "alternativeModel": "#Person",
+      "alternativeModel": ["#Person"],
       "description": ["The person or organization ultimately responsible for an event. An organizer might be an  schema:Organization or a schema:Person."],
       "example":
       {

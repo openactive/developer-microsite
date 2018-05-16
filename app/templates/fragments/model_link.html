@@ -1,0 +1,6 @@
+{% if 'ArrayOf' in thismodel %}
+  {% set itemtype = thismodel.split("#")[1] %}
+  Array of <a href="/models/{{itemtype}}">{{itemtype}}</a>
+{% else %}
+  <a href='/models/{{thismodel.replace('#', '').lower()}}'>{{thismodel.replace('#', '')}}</a>
+{% endif %}

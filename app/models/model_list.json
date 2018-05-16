@@ -1,5 +1,5 @@
 {
-  "models_order": ["Event", "Ammenity", "Brand", "Concept", "EntryPoint", "GeoCoordinates", "ImageObject", "Offer", "Organization", "Person", "Place", "PostalAddress", "ReserveAction"],
+  "models_order": ["Event", "Ammenity", "Brand", "Concept", "EntryPoint", "GeoCoordinates", "ImageObject", "Offer", "Organization", "Person", "Place", "PostalAddress", "ReserveAction","Schedule"],
   "models": {
     "event": {
       "modelName": "Event"
@@ -39,6 +39,9 @@
     },
     "reserveaction": {
       "modelName": "ReserveAction"
+    },
+    "schedule": {
+      "modelName": "Schedule"
     }
   }
 }

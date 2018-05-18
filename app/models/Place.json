@@ -21,7 +21,7 @@
             "streetAddress": "Raynes Park High School, 46A West Barnes Lane",
             "type": "PostalAddress"
           },
-          "description": ["TODO"]
+          "description": ["A structured PostalAddress object for the place. "]
         },
       "ammenityFeature": {
       "fieldName": "amenityFeature",
@@ -78,28 +78,28 @@
           "longitude": -0.2369088977575302,
           "type": "GeoCoordinates"
         },
-        "description": ["TODO"]
+        "description": ["The geo coordinates of the place."]
     },
     "name": {
       "fieldName": "name",
       "sameAs": "http://schema.org/name",
       "requiredType": "http://schema.org/Text",
       "example": "Raynes Park High School",
-      "description": ["TODO"]
+      "description": ["The name of the place"]
     },
     "telephone": {
       "fieldName": "telephone",
       "sameAs": "http://schema.org/telephone",
       "requiredType": "http://schema.org/Text",
       "example": "01253 473934",
-      "description": ["TODO"]
+      "description": ["The telephone number for the place"]
     },
     "url": {
       "fieldName": "url",
       "sameAs": "http://schema.org/url",
       "requiredType": "http://schema.org/Text",
       "example": "http://www.rphs.org.uk/",
-      "description": ["TODO"]
+      "description": ["The website for the place"]
     }
   }
 }

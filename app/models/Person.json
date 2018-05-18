@@ -13,42 +13,42 @@
       "sameAs": "http://schema.org/givenName",
       "requiredType": "http://schema.org/Text",
       "example": "daley.thompson@trackandfield.game",
-      "description": ["TODO"]
+      "description": ["An email address for the person","This person must give direct permission for their personal information to be shared as part of the Open Data."]
     },
     "familyName": {
       "fieldName": "familyName",
       "sameAs": "http://schema.org/familyName",
       "requiredType": "http://schema.org/Text",
       "example": "Thompson",
-      "description": ["TODO"]
+      "description": ["The family name of the person","This person must give direct permission for their personal information to be shared as part of the Open Data."]
     },
     "gender": {
       "fieldName": "gender",
       "sameAs": "http://schema.org/gender",
       "requiredType": "http://schema.org/Text",
       "example": "",
-      "description": ["TODO"]
+      "description": ["An gender of the person","This person must give direct permission for their personal information to be shared as part of the Open Data."]
     },
     "givenName": {
       "fieldName": "givenName",
       "sameAs": "http://schema.org/givenName",
       "requiredType": "http://schema.org/Text",
       "example": "Daley",
-      "description": ["TODO"]
+      "description": ["An given name of the person","This person must give direct permission for their personal information to be shared as part of the Open Data."]
     },
     "name": {
       "fieldName": "name",
       "sameAs": "http://schema.org/name",
       "requiredType": "http://schema.org/Text",
       "example": "Daley Thompson",
-      "description": ["TODO"]
+      "description": ["An full name for the person, where structured data around givenName and familyName is not available.","This person must give direct permission for their personal information to be shared as part of the Open Data."]
     },
     "url": {
       "fieldName": "url",
       "sameAs": "http://schema.org/url",
       "requiredType": "http://schema.org/url",
       "example": "",
-      "description": ["TODO"]
+      "description": ["A URL where more information about the person may be found"]
     }
   }
 }

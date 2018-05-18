@@ -10,7 +10,7 @@
       "sameAs": "http://schema.org/name",
       "requiredType": "http://schema.org/Text",
       "example": "Book",
-      "description": ["TODO"]
+      "description": ["The name of the action"]
     },
     "target":{
       "fieldName": "target",
@@ -22,7 +22,7 @@
         "type": "EntryPoint",
         "url": "https://example.com/orders"
       },
-      "description": ["TODO"]
+      "description": ["A definition of the target of the action."]
     }
   }
 }

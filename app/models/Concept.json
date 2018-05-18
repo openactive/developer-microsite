@@ -9,19 +9,18 @@
       "fieldName": "inScheme",
       "requiredType": "http://schema.org/url",
       "example": "https://example.com/reference/activities",
-      "description": ["TODO"]
+      "description": ["A stable URL reference for the taxonomy."]
     },
     "prefLabel": {
       "fieldName": "prefLabel",
       "requiredType": "http://schema.org/Text",
       "example": "Speedball",
-      "description": ["TODO"]
+      "description": ["A human readable string for use in user interfaces."]
     },
     "identifier": {
       "fieldName": "identifier",
-      "requiredType": "TODO",
       "example": 20,
-      "description": ["TODO"]
+      "description": ["A stable machine readable identifier for this record within a taxonomy."]
     }
   }
 }

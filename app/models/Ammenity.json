@@ -7,19 +7,19 @@
       "fieldName": "name",
       "requiredType": "http://schema.org/Text",
       "example": "Changing Facilities",
-      "description": ["TODO"]
+      "description": ["A string, suitable for presentation in user interfaces."]
     },
     "type": {
       "fieldName": "type",
       "requiredType": "http://schema.org/Text",
       "example": "ChangingFacilities",
-      "description": ["TODO"]
+      "description": ["A string key, suitable for comparison, search or browse interfaces."]
     },
     "value": {
       "fieldName": "value",
       "requiredType": "http://schema.org/Boolean",
       "example": false,
-      "description": ["TODO"]
+      "description": ["A boolean value indicating whether this ammenity is available."]
     }
   }
 }

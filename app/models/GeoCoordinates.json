@@ -7,7 +7,6 @@
   "fields": {
     "latitude": {
       "fieldName": "latitude",
-      "required": true,
       "allowEmpty": false,
       "sameAs": "http://schema.org/latitude",
       "requiredType": "http://schema.org/Float",
@@ -17,7 +16,6 @@
     },
     "longitude": {
       "fieldName": "longitude",
-      "required": true,
       "allowEmpty": false,
       "sameAs": "http://schema.org/latitude",
       "requiredType": "http://schema.org/Float",

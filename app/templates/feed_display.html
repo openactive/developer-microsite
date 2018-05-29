@@ -1,0 +1,46 @@
+{% extends "base.html"%}
+
+{% block mainpanel %}
+<div class="container">
+  <h2>Feed to check</h2>
+    <div>
+      {% if json_errors %}
+        <div>The feed you have supplied is not valid JSON</div>
+      </div>
+      {% else %}
+          <pre><code class="json">{{feed}}</code></pre>
+        </div>
+        <h2>Report</h2>
+        <h4>Feed field type checks</h4>
+        <div>
+          <pre><code class="json">{{incorrect_fields}}</code></pre>
+        </div>
+        <h4>Missing fields in feed</h4>
+        <div>
+          <pre><code class="json">{{missing_fields}}</code></pre>
+          {% for item in response.missing_fields %}
+            {% if not response.missing_fields[item]['success'] %}
+              {% if response.missing_fields[item]['level'] == 'required' %}
+                <div class="alert alert-danger" role="alert">
+              {% endif %}
+              {% if response.missing_fields[item]['level'] == 'recommended' %}
+                <div class="alert alert-warning" role="alert">
+              {% endif %}
+              <div><strong>{{item}}</strong> : {{response.missing_fields[item]['message']}}</div>
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <h2>Complete model</h2>
+        <div>
+          <pre><code class="json">{{model_to_test}}</code></pre>
+        </div>
+      {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+  <link rel="stylesheet" href="/static/styles/googlecode.css">
+  <script src="/static/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+{% endblock %}

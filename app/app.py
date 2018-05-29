@@ -1,5 +1,8 @@
 from flask import Flask, jsonify, request, Markup, Response, send_from_directory
 from flaskext.markdown import Markdown
+
+from feed_tools import checker
+
 import markdown
 
 import json
@@ -52,3 +55,52 @@ def models(model):
         return functions.render_view('model.html', {'model': model, 'example': json.dumps(example, indent=4, sort_keys=True)})
     except:
         return "404"
+
+
+@app.route("/tools/check-feed", methods=['GET'])
+def check_feed_form():
+    return functions.render_view('feed_form.html', {})
+
+
+@app.route("/tools/check-feed(.json)", methods=['POST'])
+@app.route("/tools/check-feed", methods=['POST'])
+def check_feed(json_return=False):
+    feed_string = request.form['feed']
+    # first test if the feed is valid JSON
+    try:
+        feed_dictionary = json.loads(feed_string.strip())
+        json_errors = False
+    except:
+        feed_dictionary = False
+        json_errors = True
+
+    # if it is valid JSON
+    if not json_errors:
+        # load the model which we'll test against
+        model_to_test = checker.load_model_to_test('Event.json')
+        # then look for fields with the wrong sort of values
+        forward_errors = checker.check_feed(feed_dictionary, model_to_test)
+        # then look for missing fields
+        reverse_errors = checker.check_canonical(feed_dictionary, model_to_test)
+    else:
+        model_to_test = {}
+        forward_errors = {}
+        reverse_errors = {}
+
+    response = {
+        'feed': feed_dictionary,
+        'incorrect_fields': forward_errors,
+        'missing_fields': reverse_errors
+    }
+
+    if json_return:
+        jsonify(response)
+    else:
+        return functions.render_view('feed_display.html', {
+            'response': response,
+            'feed': json.dumps(feed_dictionary, indent=4),
+            'incorrect_fields': json.dumps(forward_errors, indent=4),
+            'missing_fields': json.dumps(reverse_errors, indent=4),
+            'json_errors': json_errors,
+            'model_to_test': json.dumps(model_to_test, indent=4)
+        })

@@ -14,6 +14,12 @@ else:
 model_directory = 'models'
 
 
+def depth(dictionary):
+    if isinstance(dictionary, dict):
+        return 1 + (max(map(depth, dictionary.values())) if dictionary else 0)
+    return 0
+
+
 # standards are not validated against yet, but should be
 def load_standard(filename):
     if '.json' not in filename:
@@ -263,26 +269,25 @@ def test_feed_node(node, testnode):
     return errors
 
 # TODO rename this, we're looking for missing fields
-def test_canonical_node(node, testnode):
+def test_canonical_node(node, testnode, type='Event'):
     errors = {}
     for item in testnode:
         if item in node:
             if 'type' in testnode[item]:
-                if isinstance(node, dict):
+                if isinstance(node[item], dict) and len(node[item]) > 0:
                     print('RECURSE ' + item)
-                    print(node[item])
-                    # TODO recursion of the canonical model
+                    print(depth(testnode[item]))
+                    if depth(testnode[item]) > 2:
+                        errors[item] = test_canonical_node(node[item], testnode[item], type=testnode[item]['type']['requiredContent'])
         else:
             if item != 'context':
                 tests = {}
-                for field in testnode[item]:
-                    if not isinstance(testnode[item][field], dict):
-                        tests[field] = testnode[item][field]
-
-                if 'requiredField' in testnode[item]:
-                    errors[item] = {'success': False, 'errorType': 'missing_required_field',
-                                    'message': 'The Event is missing the required field, ' + item, 'tests': tests}
-                if 'recommendedField' in testnode[item]:
-                    errors[item] = {'success': False, 'errorType': 'missing_recommended_field',
-                                    'message': 'The Event is missing this recommended field, ' + item, 'tests': tests}
+                if isinstance(testnode[item], dict) and len(testnode[item]) > 0:
+                    for field in testnode[item]:
+                        if not isinstance(testnode[item][field], dict):
+                            tests[field] = testnode[item][field]
+                    if 'requiredField' in testnode[item]:
+                        errors[item] = {'success': False, 'errorType': 'missing_required_field', 'message': 'The '+ type +' object is missing the required field, ' + item, 'tests': tests}
+                    if 'recommendedField' in testnode[item]:
+                        errors[item] = {'success': True, 'errorType': 'missing_recommended_field', 'message': 'The '+ type +' object is missing this recommended field, ' + item, 'tests': tests}
     return errors

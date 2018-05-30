@@ -230,9 +230,9 @@ def test_feed_field(fieldname, value, tests):
         if 'success' in errors and errors['success'] == True:
             if 'requiredContent' in tests:
                 errors = test_content(value, tests['requiredContent'])
-        if value is None or value is False or len(str(value)) == 0:
+        if value is None or len(str(value)) == 0 or str(value) == '[]' or str(value) == '{}':
             errors['success'] = False
-            errors['errorType'] = 'null_or_empty_field',
+            errors['errorType'] = 'null_or_empty_field'
             errors['message'] = 'Null or empty fields should be ommitted.'
     errors['value'] = value
     errors['tests'] = tests

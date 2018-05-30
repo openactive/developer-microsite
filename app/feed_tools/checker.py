@@ -30,6 +30,21 @@ def load_standard(filename):
     file = open(filename, 'r')
     return json.loads(file.read())
 
+def set_field_level(json_representation, thisjson, field):
+    try:
+        if field in thisjson['requiredFields']:
+            json_representation[field]['requiredField'] = True
+        elif field in thisjson['requiredOptions']:
+            json_representation[field]['requiredOption'] = True
+        elif field in thisjson['recommendedFields']:
+            json_representation[field]['recommendedField'] = True
+        else:
+            json_representation[field]['optionalField'] = True
+    except:
+        json_representation[field]['optionalField'] = True
+    return json_representation
+
+
 # TODO how to represent permissive field types better
 # model loader
 def load_model_to_test(filename):
@@ -63,18 +78,7 @@ def load_model_to_test(filename):
             # set the required type to the model
             json_representation[field]['requiredType'] = thisjson['fields'][field]['model'].replace(
                 '#', '')
-            # TODO consider refactoring this into a function
-            try:
-                if field in thisjson['requiredFields']:
-                    json_representation[field]['requiredField'] = True
-                elif field in thisjson['requiredOptions']:
-                    json_representation[field]['requiredOption'] = True
-                elif field in thisjson['recommendedFields']:
-                    json_representation[field]['recommendedField'] = True
-                else:
-                    json_representation[field]['optionalField'] = True
-            except:
-                json_representation[field]['optionalField'] = True
+            json_representation = set_field_level(json_representation, thisjson, field)
         else:
             # the field does not point to a model, so we'll set up the field definition
             # remove unused field definition elements
@@ -88,18 +92,7 @@ def load_model_to_test(filename):
                 json_representation['context'] = thisjson['fields']['@context']
             else:
                 json_representation[field] = thisjson['fields'][field]
-            # again refactor this into a shared function
-            try:
-                if field in thisjson['requiredFields']:
-                    json_representation[field]['requiredField'] = True
-                elif field in thisjson['requiredOptions']:
-                    json_representation[field]['requiredOption'] = True
-                elif field in thisjson['recommendedFields']:
-                    json_representation[field]['recommendedField'] = True
-                else:
-                    json_representation[field]['optionalField'] = True
-            except:
-                json_representation[field]['optionalField'] = True
+            json_representation = set_field_level(json_representation, thisjson, field)
             # load the standard if the field uses one (not validated against yet)
             if 'standard' in field:
                 json_representation[field]['standard'] = load_standard(field['standard'])
@@ -145,42 +138,42 @@ def check_canonical(json_to_check, model_to_test, location_of_sessions=None, arr
 def test_is_url(value, required=True):
     if isinstance(value, string_types):
         if value[0:4] == 'http':
-            errors = {'success': True, 'message': 'The field is the correct type (URL).'}
+            errors = {'success': True, 'message': 'The field is the correct type (URL).', 'errorLevel': 'success'}
         else:
             errors = {
-                'success': False, 'message': 'The field should be a well formed URL, but is not.', 'errorType': 'incorrect_value_format'}
+                'success': False, 'message': 'The field should be a well formed URL, but is not.', 'errorType': 'incorrect_value_format', 'errorLevel': 'failure'}
     else:
         errors = {'success': False,
-                  'message': 'The field must be String, but is not.', 'errorType': 'incorrect_value_format'}
+                  'message': 'The field must be String, but is not.', 'errorType': 'incorrect_value_format', 'errorLevel': 'failure'}
     return errors
 
 
 # test for whether the field is a String
 def test_is_text(value, required=True):
     if isinstance(value, string_types):
-        errors = {'success': True, 'message': 'The field is the correct type (String).'}
+        errors = {'success': True, 'message': 'The field is the correct type (String).', 'errorLevel': 'success'}
     else:
         errors = {'success': False,
-                  'message': 'The field must be String, but is not.', 'errorType': 'incorrect_value_format'}
+                  'message': 'The field must be String, but is not.', 'errorType': 'incorrect_value_format', 'errorLevel': 'failure'}
     return errors
 
 
 # test for whether the field is an Integer
 def test_is_integer(value, required=True):
     if isinstance(value, int):
-        errors = {'success': True, 'message': 'The field is the correct type (Integer).'}
+        errors = {'success': True, 'message': 'The field is the correct type (Integer).', 'errorLevel': 'success'}
     else:
         errors = {'success': False,
-                  'message': 'The field must be Integer, but is not,', 'errorType': 'incorrect_value_format'}
+                  'message': 'The field must be Integer, but is not,', 'errorType': 'incorrect_value_format', 'errorLevel': 'failure'}
     return errors
 
 
 # test for whether the field is a Float
 def test_is_float(value, required=True):
     if isinstance(value, float):
-        errors = {'success': True, 'message': 'The field is the correct type (Float).'}
+        errors = {'success': True, 'message': 'The field is the correct type (Float).', 'errorLevel': 'success'}
     else:
-        errors = {'success': False, 'message': 'The field must be Float, but is not.', 'errorType': 'incorrect_value_format'}
+        errors = {'success': False, 'message': 'The field must be Float, but is not.', 'errorType': 'incorrect_value_format', 'errorLevel': 'failure'}
     return errors
 
 
@@ -194,10 +187,10 @@ def test_is_datetime(value, required=True):
 # test for whether specific content is present
 def test_content(value, content):
     if value.lower() == content.lower():
-        errors = {'success': True, 'message': 'Required content is present'}
+        errors = {'success': True, 'message': 'Required content is present', 'errorLevel': 'success'}
     else:
         errors = {'success': False,
-                  'message': 'Required content is absent or incorrect', 'errorType': 'incorrect_content'}
+                  'message': 'Required content is absent or incorrect', 'errorType': 'incorrect_content', 'errorLevel': 'failure'}
     return errors
 
 
@@ -226,10 +219,10 @@ def test_feed_field(fieldname, value, tests):
     errors = {}
     if fieldname == 'type':
         if value == tests['requiredContent']:
-            errors = {'success': True, 'message': 'Type correctly set as ' + value}
+            errors = {'success': True, 'message': 'Type correctly set as ' + value, 'errorLevel': 'success'}
         else:
             errors = {'success': False, 'message': 'Type incorrectly set as ' +
-                      value + ', must be ' + tests['requiredContent']}
+                      value + ', must be ' + tests['requiredContent'], 'errorLevel': 'failure'}
     elif 'requiredType' in tests:
         errors = test_required_type(fieldname, value, tests['requiredType'])
         if 'success' in errors and errors['success'] == True:
@@ -239,6 +232,7 @@ def test_feed_field(fieldname, value, tests):
             errors['success'] = False
             errors['errorType'] = 'null_or_empty_field'
             errors['message'] = 'Null or empty fields should be ommitted.'
+            errors['errorLevel'] = 'failure'
     errors['value'] = value
     errors['tests'] = tests
     return errors
@@ -260,11 +254,14 @@ def test_feed_node(node, testnode):
                     if 'type' not in node[item]:
                         errors[item]['success'] = False
                         errors[item]['message'] = 'Item should declare type of object'
+                        errors[item]['errorType'] = 'no_type_declaration'
+                        errors[item]['errorLevel'] = 'failure'
+
                 else:
                     errors[item] = test_feed_field(item, node[item], testnode[testitem])
             except:
                 errors[item] = {'success': True, 'value': node[item], 'message': testitem +
-                                ' is not yet represented in the Open Active models. Please check if a suitable field exists.', 'errorType': 'field_may_be_misnamed'}
+                                ' is not yet represented in the Open Active models. Please check if a suitable field exists.', 'errorType': 'field_may_be_misnamed', 'errorLevel': 'warning'}
     return errors
 
 # TODO rename this, we're looking for missing fields
@@ -284,7 +281,7 @@ def test_canonical_node(node, testnode, type='Event'):
                         if not isinstance(testnode[item][field], dict):
                             tests[field] = testnode[item][field]
                     if 'requiredField' in testnode[item]:
-                        errors[item] = {'success': False, 'errorType': 'missing_required_field', 'message': 'The '+ type +' object is missing the required field, ' + item, 'tests': tests}
+                        errors[item] = {'success': False, 'errorType': 'missing_required_field', 'message': 'The '+ type +' object is missing the required field, ' + item, 'tests': tests, 'errorLevel': 'failure'}
                     if 'recommendedField' in testnode[item]:
-                        errors[item] = {'success': True, 'errorType': 'missing_recommended_field', 'message': 'The '+ type +' object is missing this recommended field, ' + item, 'tests': tests}
+                        errors[item] = {'success': True, 'errorType': 'missing_recommended_field', 'message': 'The '+ type +' object is missing this recommended field, ' + item, 'tests': tests, 'errorLevel': 'warning'}
     return errors

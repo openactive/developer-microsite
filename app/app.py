@@ -72,8 +72,11 @@ def check_feed(json_return=False):
 
     filter = False
 
-    if 'show_only_failures' in request.form:
-        filter = 'only_failures'
+    if 'filter' in request.form:
+        filter = request.form['filter']
+        if filter == 'all':
+            filter = False
+
 
     # first test if the feed is valid JSON
     try:

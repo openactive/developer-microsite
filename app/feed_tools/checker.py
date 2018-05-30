@@ -306,6 +306,12 @@ def filter_errors(errors, filter):
                         new_errors[item] = errors[item]
                 except:
                     print(item)
+            elif filter == 'only_warnings':
+                try:
+                    if errors[item]['errorLevel'] == 'warning':
+                        new_errors[item] = errors[item]
+                except:
+                    print(item)
     if len(new_errors) > 0:
         return new_errors
     else:

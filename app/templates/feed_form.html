@@ -10,7 +10,15 @@
     </div>
     <br />
     <p>
-      <input type="checkbox" id="show_only_failures" name="show_only_failures"/> Only show failures
+      <div class="radio">
+        <label><input type="radio" name="filter" value="only_failures"> Only show failures</label>
+      </div>
+      <div class="radio">
+        <label><input type="radio" name="filter" value="only_warnings"> Only show warnings</label>
+      </div>
+      <div class="radio ">
+        <label><input type="radio" name="filter" value="all" checked> Show everything</label>
+      </div>
     </p>
     <p>
       <input type="submit" class="form-control" value="Submit" />

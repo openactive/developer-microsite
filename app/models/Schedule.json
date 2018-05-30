@@ -9,7 +9,8 @@
       "fieldName": "byDay",
       "requiredType": "http://schema.org/url",
       "example": "http://schema.org/Monday",
-      "description": ["Defines the day of the week upon which the Event takes place"]
+      "description": ["Defines the day of the week upon which the Event takes place"],
+      "options": ["http://schema.org/Monday","http://schema.org/Tuesday","http://schema.org/Wednesday","http://schema.org/Thursday","http://schema.org/Friday","http://schema.org/Saturday","http://schema.org/Sunday"]
     },
     "byMonth": {
       "fieldName": "byMonth",

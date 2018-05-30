@@ -315,8 +315,11 @@ def test_feed_node(node, testnode):
                 else:
                     errors[item] = test_feed_field(item, node[item], testnode[testitem])
             except:
-                errors[item] = {'success': True, 'value': node[item], 'message': testitem +
-                                ' is not yet represented in the Open Active models. Please check if a suitable field exists.', 'errorType': 'field_may_be_misnamed', 'errorLevel': 'warning'}
+                if 'beta:' in testitem:
+                    errors[item] = {'success': True, 'value': node[item], 'message': 'Please check on the status of beta namespaced fields to see if they have been adopted in new versions.', 'errorType': 'beta_namespaced_field', 'errorLevel': 'warning'}
+
+                else:
+                    errors[item] = {'success': True, 'value': node[item], 'message': testitem + ' is not yet represented in the Open Active models. Please check if a suitable field exists.', 'errorType': 'field_may_be_misnamed', 'errorLevel': 'warning'}
     return errors
 
 # check feed for for missing fields

@@ -45,3 +45,21 @@ Now enter Certificate Manager and request a certificate.
 8. Under Base Path Mappings enter "/" in the Path and select your API Gateway instance from the dropdown list. Ensure you select the dev stage so that any requests for "/" are proxied to "/dev"
 
 9. Finally point your CNAME at the provided Target Domain Name
+
+## using the prototype feed checking
+
+Currently the feed checking prototype is only on the 'feed-checker' branch.
+
+Check out that branch and follow the instructions above for building locally. The requirements are currently the same so you can switch branches without rebuilding the virtual environment.
+
+Then navigate to http://127.0.0.1:5000/tools/check-feed
+
+A recent version can also be run on https://developer.openactive.io/tools/check-feed
+
+### known issues with feed checking
+
+- at the moment you can only check an event block at a time, we need to implement checking a whole feed
+- some of the models don't yet have requiredTypes (but this will change soon)
+- there's currently no format checking i.e. doesn't check if an ISO8601 DateTime is really an ISO8601 DateTime
+- it currently ignores optional field types and will only look at the requiredType/model and test whether that is currently being used (it's less permissive than the spec for now, but that will change)
+- it doesn't yet check whether the value is one of the options, it does however look at requiredContent (again, this will change)

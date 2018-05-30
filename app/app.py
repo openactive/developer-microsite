@@ -79,9 +79,9 @@ def check_feed(json_return=False):
         # load the model which we'll test against
         model_to_test = checker.load_model_to_test('Event.json')
         # then look for fields with the wrong sort of values
-        forward_errors = checker.check_feed(feed_dictionary, model_to_test)
+        forward_errors = checker.check_feed_field_types(feed_dictionary, model_to_test)
         # then look for missing fields
-        reverse_errors = checker.check_canonical(feed_dictionary, model_to_test)
+        reverse_errors = checker.check_for_missing_fields(feed_dictionary, model_to_test)
     else:
         model_to_test = {}
         forward_errors = {}

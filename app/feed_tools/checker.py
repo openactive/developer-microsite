@@ -100,7 +100,7 @@ def load_model_to_test(filename):
 
 # function to check feed field types
 # TODO possibly rename this function
-def check_feed(json_to_check, model_to_test, location_of_sessions=None, array_pointer=None, in_data=False):
+def check_feed_field_types(json_to_check, model_to_test, location_of_sessions=None, array_pointer=None, in_data=False):
 
     if location_of_sessions is not None:
         json_to_check = json_to_check[location_of_sessions]
@@ -118,7 +118,7 @@ def check_feed(json_to_check, model_to_test, location_of_sessions=None, array_po
 
 # function to check feed field presence
 # TODO possibly rename this function
-def check_canonical(json_to_check, model_to_test, location_of_sessions=None, array_pointer=None, in_data=False):
+def check_for_missing_fields(json_to_check, model_to_test, location_of_sessions=None, array_pointer=None, in_data=False):
     if location_of_sessions is not None:
         json_to_check = json_to_check[location_of_sessions]
 
@@ -128,7 +128,7 @@ def check_canonical(json_to_check, model_to_test, location_of_sessions=None, arr
     if in_data is True:
         json_to_check = json_to_check['data']
 
-    reverse_errors = test_canonical_node(json_to_check, model_to_test)
+    reverse_errors = test_node_for_missing_fields(json_to_check, model_to_test)
 
     return reverse_errors
 
@@ -265,14 +265,14 @@ def test_feed_node(node, testnode):
     return errors
 
 # TODO rename this, we're looking for missing fields
-def test_canonical_node(node, testnode, type='Event'):
+def test_node_for_missing_fields(node, testnode, type='Event'):
     errors = {}
     for item in testnode:
         if item in node:
             if 'type' in testnode[item]:
                 if isinstance(node[item], dict) and len(node[item]) > 0:
                     if depth(testnode[item]) > 2:
-                        errors[item] = test_canonical_node(node[item], testnode[item], type=testnode[item]['type']['requiredContent'])
+                        errors[item] = test_node_for_missing_fields(node[item], testnode[item], type=testnode[item]['type']['requiredContent'])
         else:
             if item != 'context':
                 tests = {}

@@ -48,5 +48,11 @@
     <div class="well">
       <pre><code class="json">{{field.inlineExample}}</code></pre>
     </div>
+    {% if field.options %}
+    <h6>Options</h6>
+    <div class="well">
+      <pre><code class="json">{% for option in field.options %}{{option}}<br />{% endfor %}</code></pre>
+    </div>
+    {% endif %}
   </td>
 </tr>

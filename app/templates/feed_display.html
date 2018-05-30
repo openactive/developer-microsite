@@ -8,16 +8,13 @@
       <li class="breadcrumb-item active" aria-current="page"><a href="/tools/check-feed">Check feed</a></li>
     </ol>
   </nav>
-  <h2>Feed to check</h2>
-    <div>
+  <h2>Check feed report</h2>
+  <br />
       {% if json_errors %}
-        <div>The feed you have supplied is not valid JSON</div>
-      </div>
-      {% else %}
-          <pre><code class="json">{{feed}}</code></pre>
+        <div>
+          <div>The feed you have supplied is not valid JSON</div>
         </div>
-        <hr />
-        <h2>Report</h2>
+      {% else %}
         <h4>Feed field type checks</h4>
         <div>
           <pre><code class="json">{{incorrect_fields}}</code></pre>
@@ -27,10 +24,16 @@
           <pre><code class="json">{{missing_fields}}</code></pre>
         </div>
         <hr />
-        <h2>Complete model</h2>
+        <h2>Feed as provided</h2>
+        <div>
+          <pre><code class="json">{{feed}}</code></pre>
+        </div>
+        <hr />
+        <h2>OpenActive Datamodel</h2>
         <div>
           <pre><code class="json">{{model_to_test}}</code></pre>
         </div>
+
       {% endif %}
 </div>
 {% endblock %}

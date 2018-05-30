@@ -82,6 +82,7 @@ def check_feed(json_return=False):
         forward_errors = checker.check_feed(feed_dictionary, model_to_test)
         # then look for missing fields
         reverse_errors = checker.check_canonical(feed_dictionary, model_to_test)
+        print(reverse_errors)
     else:
         model_to_test = {}
         forward_errors = {}

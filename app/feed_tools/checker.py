@@ -270,10 +270,10 @@ def test_canonical_node(node, testnode):
                     # TODO recursion of the canonical model
         else:
             if item != 'context':
-                if 'required' in testnode[item]:
-                    errors[item] = {'success': False, 'level': 'required',
+                if 'requiredField' in testnode[item]:
+                    errors[item] = {'success': False, 'errorType': 'missing_required_field',
                                     'message': 'The Event is missing the required field, ' + item}
-                if 'recommended' in testnode[item]:
-                    errors[item] = {'success': False, 'level': 'recommended',
+                if 'recommendedField' in testnode[item]:
+                    errors[item] = {'success': False, 'errorType': 'missing_recommended_field',
                                     'message': 'The Event is missing this recommended field, ' + item}
     return errors

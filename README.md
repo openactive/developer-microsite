@@ -56,6 +56,18 @@ Then navigate to http://127.0.0.1:5000/tools/check-feed
 
 A recent version can also be run on https://developer.openactive.io/tools/check-feed
 
+## how the feed checking currently works
+
+The prototype currently follows the following workflow.
+
+It loads the machine readable models and builds a canonical model of what an Event should look like (including all sub models which have been derived from Schema/SKOS)
+
+It walks the provided event, checking the field types against the relevant equivalent field in the definition in the canonical model. This generates a JSON document of errors/results which are in the same structure as the Event.
+
+It walks the canonical model, checking for fields which are required/recommended but are missing and highlighting fields which are present in the feed but not the model (sometimes these are misnamed, sometimes they're beta namespaced fields, sometimes they're just additional for each provider). This generates as JSON document of errors in the same structure as the Event.
+
+Finally the two JSON documents, one for field type results, one for missing/additional/misnames field results are filtered as to the level of event if the user requires.
+
 ### known issues with feed checking
 
 - at the moment you can only check an event block at a time, we need to implement checking a whole feed

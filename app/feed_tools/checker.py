@@ -235,6 +235,8 @@ def test_feed_field(fieldname, value, tests):
             errors['errorType'] = 'null_or_empty_field'
             errors['message'] = 'Null or empty fields should be ommitted.'
             errors['errorLevel'] = 'failure'
+    else:
+        errors = {'sucess': True, 'message': 'No test yet in place. Check manually', 'errorLevel': 'warning', 'value': value}
     errors['value'] = value
     errors['tests'] = tests
     return errors

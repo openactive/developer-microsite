@@ -270,10 +270,15 @@ def test_canonical_node(node, testnode):
                     # TODO recursion of the canonical model
         else:
             if item != 'context':
+                tests = {}
+                for field in testnode[item]:
+                    if not isinstance(testnode[item][field], dict):
+                        tests[field] = testnode[item][field]
+
                 if 'requiredField' in testnode[item]:
                     errors[item] = {'success': False, 'errorType': 'missing_required_field',
-                                    'message': 'The Event is missing the required field, ' + item}
+                                    'message': 'The Event is missing the required field, ' + item, 'tests': tests}
                 if 'recommendedField' in testnode[item]:
                     errors[item] = {'success': False, 'errorType': 'missing_recommended_field',
-                                    'message': 'The Event is missing this recommended field, ' + item}
+                                    'message': 'The Event is missing this recommended field, ' + item, 'tests': tests}
     return errors

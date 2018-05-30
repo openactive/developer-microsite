@@ -65,7 +65,16 @@ def check_feed_form():
 @app.route("/tools/check-feed(.json)", methods=['POST'])
 @app.route("/tools/check-feed", methods=['POST'])
 def check_feed(json_return=False):
-    feed_string = request.form['feed']
+    feed_string = request.form['feed_json']
+    model_to_test = {}
+    incorrect_fields = {}
+    missing_fields = {}
+
+    filter = False
+
+    if 'show_only_failures' in request.form:
+        filter = 'only_failures'
+
     # first test if the feed is valid JSON
     try:
         feed_dictionary = json.loads(feed_string.strip())
@@ -76,31 +85,41 @@ def check_feed(json_return=False):
 
     # if it is valid JSON
     if not json_errors:
+        if len(feed_dictionary) == 0:
+            empty_json = True
+        else:
+            empty_json = False
         # load the model which we'll test against
         model_to_test = checker.load_model_to_test('Event.json')
+
         # then look for fields with the wrong sort of values
-        forward_errors = checker.check_feed_field_types(feed_dictionary, model_to_test)
+        incorrect_fields = checker.check_feed_field_types(feed_dictionary, model_to_test)
+
         # then look for missing fields
-        reverse_errors = checker.check_for_missing_fields(feed_dictionary, model_to_test)
-    else:
-        model_to_test = {}
-        forward_errors = {}
-        reverse_errors = {}
+        missing_fields = checker.check_for_missing_fields(feed_dictionary, model_to_test)
+
+
+    if filter:
+        incorrect_fields = checker.filter_errors(incorrect_fields, filter)
+        missing_fields = checker.filter_errors(missing_fields, filter)
 
     response = {
         'feed': feed_dictionary,
-        'incorrect_fields': forward_errors,
-        'missing_fields': reverse_errors
+        'incorrect_fields': incorrect_fields,
+        'missing_fields': missing_fields
     }
 
     if json_return:
         jsonify(response)
+
     else:
         return functions.render_view('feed_display.html', {
             'response': response,
             'feed': json.dumps(feed_dictionary, indent=4),
-            'incorrect_fields': json.dumps(forward_errors, indent=4),
-            'missing_fields': json.dumps(reverse_errors, indent=4),
+            'incorrect_fields': json.dumps(incorrect_fields, indent=4),
+            'missing_fields': json.dumps(missing_fields, indent=4),
             'json_errors': json_errors,
+            'empty_json': empty_json,
+            'filter': filter,
             'model_to_test': json.dumps(model_to_test, indent=4)
         })

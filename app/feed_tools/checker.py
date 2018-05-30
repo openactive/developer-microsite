@@ -181,7 +181,7 @@ def test_is_float(value, required=True):
 # TODO fill out test
 # TODO also test for date
 def test_is_datetime(value, required=True):
-    return {}
+    return {'sucess': True, 'message': 'No test yet in place. Check manually', 'errorLevel': 'warning', 'value': value}
 
 
 # test for whether specific content is present
@@ -206,6 +206,8 @@ def test_required_type(fieldname, value, requiredType, standard=False, required=
         errors = test_is_float(value, required)
     elif requiredType == 'http://schema.org/Integer':
         errors = test_is_integer(value, required)
+    else:
+        errors = {'sucess': True, 'message': 'No test yet in place. Check manually', 'errorLevel': 'warning', 'value': value}
     return errors
 
 
@@ -238,7 +240,7 @@ def test_feed_field(fieldname, value, tests):
     return errors
 
 
-# testing a dictionary node
+# testing a node for field types
 # TODO include how to test within arrays
 def test_feed_node(node, testnode):
     errors = {}
@@ -251,6 +253,7 @@ def test_feed_node(node, testnode):
             try:
                 if 'type' in testnode[testitem]:
                     errors[item] = test_feed_node(node[item], testnode[testitem])
+                    errors[item]['errorLevel'] = 'object'
                     if 'type' not in node[item]:
                         errors[item]['success'] = False
                         errors[item]['message'] = 'Item should declare type of object'
@@ -264,7 +267,7 @@ def test_feed_node(node, testnode):
                                 ' is not yet represented in the Open Active models. Please check if a suitable field exists.', 'errorType': 'field_may_be_misnamed', 'errorLevel': 'warning'}
     return errors
 
-# TODO rename this, we're looking for missing fields
+# check feed for for missing fields
 def test_node_for_missing_fields(node, testnode, type='Event'):
     errors = {}
     for item in testnode:
@@ -285,3 +288,23 @@ def test_node_for_missing_fields(node, testnode, type='Event'):
                     if 'recommendedField' in testnode[item]:
                         errors[item] = {'success': True, 'errorType': 'missing_recommended_field', 'message': 'The '+ type +' object is missing this recommended field, ' + item, 'tests': tests, 'errorLevel': 'warning'}
     return errors
+
+
+def filter_errors(errors, filter):
+    new_errors = {}
+    for item in errors:
+        if depth(errors[item]) > 2:
+            error = filter_errors(errors[item], filter)
+            if error:
+                new_errors[item] = error
+        else:
+            if filter == 'only_failures':
+                try:
+                    if errors[item]['errorLevel'] == 'failure':
+                        new_errors[item] = errors[item]
+                except:
+                    print(item)
+    if len(new_errors) > 0:
+        return new_errors
+    else:
+        return False

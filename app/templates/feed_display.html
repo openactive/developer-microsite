@@ -9,27 +9,52 @@
     </ol>
   </nav>
   <h2>Check feed report</h2>
+  {% if filter %}
+  <br />
+    {% if filter == 'only_failures' %}
+      <p>
+        Currently only showing failures.
+      </p>
+    {% endif %}
+  {% endif %}
   <br />
       {% if json_errors %}
-        <div>
-          <div>The feed you have supplied is not valid JSON</div>
-        </div>
+          <p>
+            The feed you have supplied is not valid JSON.
+          </p>
       {% else %}
-        <h4>Feed field type checks</h4>
-        <div>
-          <pre><code class="json">{{incorrect_fields}}</code></pre>
-        </div>
+          <h4>Feed field type checks</h4>
+          <br />
+          {% if empty_json %}
+            <p>
+              The feed you have supplied is empty.
+            </p>
+          {% else %}
+            {% if response.incorrect_fields %}
+              <div>
+                <pre><code class="json">{{incorrect_fields}}</code></pre>
+              </div>
+            {% else %}
+              <p>
+                No field type errors.
+              </p>
+          {% endif %}
+        {% endif %}
+        <hr />
         <h4>Missing fields in feed</h4>
+        <br />
         <div>
           <pre><code class="json">{{missing_fields}}</code></pre>
         </div>
         <hr />
         <h2>Feed as provided</h2>
+        <br />
         <div>
           <pre><code class="json">{{feed}}</code></pre>
         </div>
         <hr />
         <h2>OpenActive Datamodel</h2>
+        <br />
         <div>
           <pre><code class="json">{{model_to_test}}</code></pre>
         </div>

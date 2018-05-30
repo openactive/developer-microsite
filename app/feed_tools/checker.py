@@ -14,6 +14,56 @@ else:
 model_directory = 'models'
 
 
+
+def check_feed_string(feed_string, model_file, filter):
+        model_to_test = {}
+        incorrect_fields = {}
+        missing_fields = {}
+
+        # first test if the feed is valid JSON
+        try:
+            feed_dictionary = json.loads(feed_string.strip())
+            json_errors = False
+        except:
+            feed_dictionary = False
+            json_errors = True
+
+        # if it is valid JSON
+        if not json_errors:
+            if len(feed_dictionary) == 0:
+                empty_json = True
+            else:
+                empty_json = False
+            # load the model which we'll test against
+            model_to_test = load_model_to_test(model_file)
+
+            # then look for fields with the wrong sort of values
+            incorrect_fields = check_feed_field_types(feed_dictionary, model_to_test)
+
+            # then look for missing fields
+            missing_fields = check_for_missing_fields(feed_dictionary, model_to_test)
+
+
+        if filter:
+            incorrect_fields = filter_errors(incorrect_fields, filter)
+            missing_fields = filter_errors(missing_fields, filter)
+
+        response = {
+            'feed_dictionary': feed_dictionary,
+            'incorrect_fields': incorrect_fields,
+            'missing_fields': missing_fields,
+            'model_to_test': model_to_test,
+            'filter': filter
+        }
+
+        return response, json_errors, empty_json
+
+
+
+
+
+
+
 def depth(dictionary):
     if isinstance(dictionary, dict):
         return 1 + (max(map(depth, dictionary.values())) if dictionary else 0)

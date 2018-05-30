@@ -65,52 +65,16 @@ def check_feed_form():
 @app.route("/tools/check-feed(.json)", methods=['POST'])
 @app.route("/tools/check-feed", methods=['POST'])
 def check_feed(json_return=False):
+
     feed_string = request.form['feed_json']
-    model_to_test = {}
-    incorrect_fields = {}
-    missing_fields = {}
 
     filter = False
-
     if 'filter' in request.form:
         filter = request.form['filter']
         if filter == 'all':
             filter = False
 
-
-    # first test if the feed is valid JSON
-    try:
-        feed_dictionary = json.loads(feed_string.strip())
-        json_errors = False
-    except:
-        feed_dictionary = False
-        json_errors = True
-
-    # if it is valid JSON
-    if not json_errors:
-        if len(feed_dictionary) == 0:
-            empty_json = True
-        else:
-            empty_json = False
-        # load the model which we'll test against
-        model_to_test = checker.load_model_to_test('Event.json')
-
-        # then look for fields with the wrong sort of values
-        incorrect_fields = checker.check_feed_field_types(feed_dictionary, model_to_test)
-
-        # then look for missing fields
-        missing_fields = checker.check_for_missing_fields(feed_dictionary, model_to_test)
-
-
-    if filter:
-        incorrect_fields = checker.filter_errors(incorrect_fields, filter)
-        missing_fields = checker.filter_errors(missing_fields, filter)
-
-    response = {
-        'feed': feed_dictionary,
-        'incorrect_fields': incorrect_fields,
-        'missing_fields': missing_fields
-    }
+    response, json_errors, empty_json = checker.check_feed_string(feed_string, 'Event.json', filter)
 
     if json_return:
         jsonify(response)
@@ -118,11 +82,11 @@ def check_feed(json_return=False):
     else:
         return functions.render_view('feed_display.html', {
             'response': response,
-            'feed': json.dumps(feed_dictionary, indent=4),
-            'incorrect_fields': json.dumps(incorrect_fields, indent=4),
-            'missing_fields': json.dumps(missing_fields, indent=4),
+            'feed': json.dumps(response['feed_dictionary'], indent=4),
+            'incorrect_fields': json.dumps(response['incorrect_fields'], indent=4),
+            'missing_fields': json.dumps(response['missing_fields'], indent=4),
             'json_errors': json_errors,
             'empty_json': empty_json,
             'filter': filter,
-            'model_to_test': json.dumps(model_to_test, indent=4)
+            'model_to_test': json.dumps(response['model_to_test'], indent=4)
         })

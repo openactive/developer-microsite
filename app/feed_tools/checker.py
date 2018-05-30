@@ -38,7 +38,6 @@ def load_model_to_test(filename):
         filename = filename + '.json'
     if '#' in filename:
         filename = filename.replace('#', '')
-    print("LOADING MODEL " + filename)
     filename = model_directory + '/' + filename
     file = open(filename, 'r')
     thisjson = json.loads(file.read())
@@ -275,8 +274,6 @@ def test_canonical_node(node, testnode, type='Event'):
         if item in node:
             if 'type' in testnode[item]:
                 if isinstance(node[item], dict) and len(node[item]) > 0:
-                    print('RECURSE ' + item)
-                    print(depth(testnode[item]))
                     if depth(testnode[item]) > 2:
                         errors[item] = test_canonical_node(node[item], testnode[item], type=testnode[item]['type']['requiredContent'])
         else:

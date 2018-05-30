@@ -2,6 +2,12 @@
 
 {% block mainpanel %}
 <div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item" aria-current="page">Tools</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="/tools/check-feed">Check feed</a></li>
+    </ol>
+  </nav>
   <h2>Feed to check</h2>
     <div>
       {% if json_errors %}
@@ -10,6 +16,7 @@
       {% else %}
           <pre><code class="json">{{feed}}</code></pre>
         </div>
+        <hr />
         <h2>Report</h2>
         <h4>Feed field type checks</h4>
         <div>
@@ -18,19 +25,8 @@
         <h4>Missing fields in feed</h4>
         <div>
           <pre><code class="json">{{missing_fields}}</code></pre>
-          {% for item in response.missing_fields %}
-            {% if not response.missing_fields[item]['success'] %}
-              {% if response.missing_fields[item]['level'] == 'required' %}
-                <div class="alert alert-danger" role="alert">
-              {% endif %}
-              {% if response.missing_fields[item]['level'] == 'recommended' %}
-                <div class="alert alert-warning" role="alert">
-              {% endif %}
-              <div><strong>{{item}}</strong> : {{response.missing_fields[item]['message']}}</div>
-            </div>
-            {% endif %}
-          {% endfor %}
         </div>
+        <hr />
         <h2>Complete model</h2>
         <div>
           <pre><code class="json">{{model_to_test}}</code></pre>

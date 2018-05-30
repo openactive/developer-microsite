@@ -39,16 +39,16 @@ def load_model_to_test(filename):
     # add in common fields, such as type and id if the model has an id
     json_representation['type'] = {
         'requiredType': 'http://schema.org/Text',
-        'required': True,
+        'requiredField': True,
         'requiredContent': thisjson['type']
     }
     if thisjson['hasId']:
         json_representation['identifier'] = {
-            'optional': True
+            'optionalField': True
         }
         json_representation['id'] = {
             'requiredType': 'http://schema.org/url',
-            'required': True
+            'requiredField': True
         }
     # iterate through the model's fields
     for field in thisjson['fields']:
@@ -61,15 +61,15 @@ def load_model_to_test(filename):
             # TODO consider refactoring this into a function
             try:
                 if field in thisjson['requiredFields']:
-                    json_representation[field]['required'] = True
+                    json_representation[field]['requiredField'] = True
                 elif field in thisjson['requiredOptions']:
                     json_representation[field]['requiredOption'] = True
                 elif field in thisjson['recommendedFields']:
-                    json_representation[field]['recommended'] = True
+                    json_representation[field]['recommendedField'] = True
                 else:
-                    json_representation[field]['optional'] = True
+                    json_representation[field]['optionalField'] = True
             except:
-                json_representation[field]['optional'] = True
+                json_representation[field]['optionalField'] = True
         else:
             # the field does not point to a model, so we'll set up the field definition
             # remove unused field definition elements
@@ -86,15 +86,15 @@ def load_model_to_test(filename):
             # again refactor this into a shared function
             try:
                 if field in thisjson['requiredFields']:
-                    json_representation[field]['required'] = True
+                    json_representation[field]['requiredField'] = True
                 elif field in thisjson['requiredOptions']:
                     json_representation[field]['requiredOption'] = True
                 elif field in thisjson['recommendedFields']:
-                    json_representation[field]['recommended'] = True
+                    json_representation[field]['recommendedField'] = True
                 else:
-                    json_representation[field]['optional'] = True
+                    json_representation[field]['optionalField'] = True
             except:
-                json_representation[field]['optional'] = True
+                json_representation[field]['optionalField'] = True
             # load the standard if the field uses one (not validated against yet)
             if 'standard' in field:
                 json_representation[field]['standard'] = load_standard(field['standard'])
@@ -143,10 +143,10 @@ def test_is_url(value, required=True):
             errors = {'success': True, 'message': 'The field is the correct type (URL).'}
         else:
             errors = {
-                'success': False, 'message': 'The field should be a well formed URL, but is not.', 'level': 'required'}
+                'success': False, 'message': 'The field should be a well formed URL, but is not.', 'errorType': 'incorrect_value_format'}
     else:
         errors = {'success': False,
-                  'message': 'The field must be String, but is not.', 'level': 'required'}
+                  'message': 'The field must be String, but is not.', 'errorType': 'incorrect_value_format'}
     return errors
 
 
@@ -156,7 +156,7 @@ def test_is_text(value, required=True):
         errors = {'success': True, 'message': 'The field is the correct type (String).'}
     else:
         errors = {'success': False,
-                  'message': 'The field must be String, but is not.', 'level': 'required'}
+                  'message': 'The field must be String, but is not.', 'errorType': 'incorrect_value_format'}
     return errors
 
 
@@ -166,7 +166,7 @@ def test_is_integer(value, required=True):
         errors = {'success': True, 'message': 'The field is the correct type (Integer).'}
     else:
         errors = {'success': False,
-                  'message': 'The field must be Integer, but is not,', 'level': 'required'}
+                  'message': 'The field must be Integer, but is not,', 'errorType': 'incorrect_value_format'}
     return errors
 
 
@@ -175,7 +175,7 @@ def test_is_float(value, required=True):
     if isinstance(value, float):
         errors = {'success': True, 'message': 'The field is the correct type (Float).'}
     else:
-        errors = {'success': False, 'message': 'The field must be Float, but is not.', 'level': 'required'}
+        errors = {'success': False, 'message': 'The field must be Float, but is not.', 'errorType': 'incorrect_value_format'}
     return errors
 
 
@@ -192,7 +192,7 @@ def test_content(value, content):
         errors = {'success': True, 'message': 'Required content is present'}
     else:
         errors = {'success': False,
-                  'message': 'Required content is absent or incorrect', 'level': 'required'}
+                  'message': 'Required content is absent or incorrect', 'errorType': 'incorrect_content'}
     return errors
 
 
@@ -230,6 +230,8 @@ def test_feed_field(fieldname, value, tests):
         if 'success' in errors and errors['success'] == True:
             if 'requiredContent' in tests:
                 errors = test_content(value, tests['requiredContent'])
+    errors['value'] = value
+    errors['tests'] = tests
     return errors
 
 
@@ -252,8 +254,8 @@ def test_feed_node(node, testnode):
                 else:
                     errors[item] = test_feed_field(item, node[item], testnode[testitem])
             except:
-                errors[item] = {'success': True, 'message': testitem +
-                                ' is not yet represented in the Open Active models. '}
+                errors[item] = {'success': True, 'value': node[item], 'message': testitem +
+                                ' is not yet represented in the Open Active models. Please check if a suitable field exists.', 'errorType': 'field_may_be_misnamed'}
     return errors
 
 # TODO rename this, we're looking for missing fields
@@ -270,8 +272,8 @@ def test_canonical_node(node, testnode):
             if item != 'context':
                 if 'required' in testnode[item]:
                     errors[item] = {'success': False, 'level': 'required',
-                                    'message': 'The feed is missing the required field, ' + item}
+                                    'message': 'The Event is missing the required field, ' + item}
                 if 'recommended' in testnode[item]:
                     errors[item] = {'success': False, 'level': 'recommended',
-                                    'message': 'The feed is missing this recommended field, ' + item}
+                                    'message': 'The Event is missing this recommended field, ' + item}
     return errors

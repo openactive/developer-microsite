@@ -75,3 +75,4 @@ Finally the two JSON documents, one for field type results, one for missing/addi
 - there's currently no format checking i.e. doesn't check if an ISO8601 DateTime is really an ISO8601 DateTime
 - it currently ignores optional field types and will only look at the requiredType/model and test whether that is currently being used (it's less permissive than the spec for now, but that will change)
 - it doesn't yet check whether the value is one of the options, it does however look at requiredContent (again, this will change)
+- we're not yet currently dealing with SubEvent or SuperEvent

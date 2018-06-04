@@ -5,7 +5,8 @@
   "hasId": true,
   "idFormat": "http://schema.org/url",
   "sampleId": "https://example.com/offer/",
-  "requiredFields": [],
+  "requiredFields": ["name", "price", "priceCurrency", "availabilityStarts", "availabilityEnds"],
+  "recommendedFields": ["acceptedPaymentMethod", "eligibleCustomerType"],
   "fields": {
     "acceptedPaymentMethod": {
       "fieldName": "acceptedPaymentMethod",

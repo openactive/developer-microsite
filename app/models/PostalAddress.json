@@ -3,7 +3,8 @@
   "sameAs": null,
   "derivedFrom": "http://schema.org/PostalAddress",
   "hasId": false,
-  "requiredFields": [],
+  "requiredFields": ["addressCountry", "streetAddress", "postalCode"],
+  "recommendedFields": ["addressLocality", "addressRegion"]
   "fields": {
       "addressCountry": {
         "fieldName": "addressCountry",

@@ -5,7 +5,8 @@
   "hasId": true,
   "idFormat": "http://schema.org/url",
   "sampleId": "https://example.com/organization/",
-  "requiredFields": [],
+  "requiredFields": ["name", "url"],
+  "recommendedFields": ["email", "logo", "sameAs"],
   "fields": {
     "email": {
       "fieldName": "email",

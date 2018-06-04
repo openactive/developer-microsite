@@ -5,7 +5,8 @@
   "hasId": true,
   "idFormat": "http://schema.org/url",
   "sampleId": "https://example.com/place/",
-  "requiredFields": [],
+  "requiredFields": ["address", "name", "url"],
+  "recommendedFields": ["geo"]
   "fields": {
     "address":     {
           "fieldName": "address",

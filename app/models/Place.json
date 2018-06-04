@@ -22,7 +22,7 @@
             "streetAddress": "Raynes Park High School, 46A West Barnes Lane",
             "type": "PostalAddress"
           },
-          "description": ["A structured PostalAddress object for the place. "]
+          "description": ["A structured PostalAddress object for the Place.","Ideally the address should be provided using the PostalAddress structured format. Google Reserve requires http://schema.org/PostalAddress and will not accept plain text addresses."]
         },
       "ammenityFeature": {
       "fieldName": "amenityFeature",
@@ -66,7 +66,7 @@
       "sameAs": "http://schema.org/description",
       "requiredType": "http://schema.org/Text",
       "example": "Raynes Park High School in London",
-      "description": ["TODO"]
+      "description": ["The description of the Place"]
     },
     "geo": {
       "fieldName": "geo",
@@ -79,28 +79,28 @@
           "longitude": -0.2369088977575302,
           "type": "GeoCoordinates"
         },
-        "description": ["The geo coordinates of the place."]
+        "description": ["The geo coordinates of the Place."]
     },
     "name": {
       "fieldName": "name",
       "sameAs": "http://schema.org/name",
       "requiredType": "http://schema.org/Text",
       "example": "Raynes Park High School",
-      "description": ["The name of the place"]
+      "description": ["The name of the Place"]
     },
     "telephone": {
       "fieldName": "telephone",
       "sameAs": "http://schema.org/telephone",
       "requiredType": "http://schema.org/Text",
       "example": "01253 473934",
-      "description": ["The telephone number for the place"]
+      "description": ["The telephone number for the Place"]
     },
     "url": {
       "fieldName": "url",
       "sameAs": "http://schema.org/url",
       "requiredType": "http://schema.org/Text",
       "example": "http://www.rphs.org.uk/",
-      "description": ["The website for the place"]
+      "description": ["The website for the Place"]
     }
   }
 }

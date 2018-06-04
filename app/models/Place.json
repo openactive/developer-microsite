@@ -59,7 +59,7 @@
               "type":"Parking"
             }
           ],
-          "description": ["TODO"]
+          "description": ["An array listing the Ammenities of the Place."]
     },
     "description": {
       "fieldName": "description",

@@ -75,7 +75,9 @@
       "fieldName": "contributor",
       "model": "#Person",
       "description": ["TODO"],
-      "example": "TODO"
+      "example": {
+        
+      }
     },
     "description":{
       "fieldName": "description",
@@ -274,7 +276,12 @@
       "fieldName": "programme",
       "model": "#Brand",
       "description": ["Indicates that an event will be organised according to a specific Programme"],
-      "example": "TODO"
+      "example": {
+        "name": "Play Ball!",
+        "description": "Play Ball! is a series of games for people of all abilities.",
+        "url": "http://example.com/play_ball",
+        "logo": "http://example.com/images/play_ball_logo.svg"
+      }
     },
     "remainingAttendeeCapacity": {
       "fieldName": "remainingAttendeeCapacity",

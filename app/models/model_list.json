@@ -1,5 +1,8 @@
 {
   "models_order": ["Event", "Ammenity", "Brand", "Concept", "EntryPoint", "GeoCoordinates", "ImageObject", "Offer", "Organization", "Person", "Place", "PostalAddress", "ReserveAction","Schedule"],
+  "event_elements": ["Ammenity", "Brand", "Concept", "GeoCoordinates", "ImageObject", "Organization", "Person", "Place", "PostalAddress", "Schedule"],
+  "event_booking": ["EntryPoint", "Offer", "ReserveAction"],
+  "event_core": ["Event"],
   "models": {
     "event": {
       "modelName": "Event"

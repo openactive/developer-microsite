@@ -37,8 +37,12 @@ def content_handler(view='index'):
 @app.route("/models")
 def models_home():
     filepath = 'models/model_list.json'
-    models = functions.read_file(filepath, json_format=True)['models_order']
-    return functions.render_view('models.html', {'models': models})
+    model_list = functions.read_file(filepath, json_format=True)
+    models = model_list['models_order']
+    event_core = model_list['event_core']
+    event_elements = model_list['event_elements']
+    event_booking = model_list['event_booking']
+    return functions.render_view('models.html', {'models': models, 'event_core': event_core, 'event_elements': event_elements, 'event_booking': event_booking})
 
 
 @app.route("/models/<model>")

@@ -4,7 +4,7 @@
   "derivedFrom": "http://schema.org/ReserveAction",
   "hasId": false,
   "requiredFields": ["name", "target"],
-  "recommendedFields": ["description"]
+  "recommendedFields": [],
   "fields": {
     "name":{
       "fieldName": "name",

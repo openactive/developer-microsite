@@ -1,6 +1,6 @@
 ---
 name: Rule template
-about: Template for a new validator rule suggestion
+about: Template for a new validation rule suggestion
 
 ---
 

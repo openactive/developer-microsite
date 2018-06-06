@@ -3,7 +3,7 @@
   "sameAs": null,
   "derivedFrom": "https://www.w3.org/TR/skos-primer/#secconcept",
   "hasId": false,
-  "requiredFields": [],
+  "requiredFields": ["inScheme", "prefLabel", "identifier"],
   "fields": {
     "inScheme": {
       "fieldName": "inScheme",

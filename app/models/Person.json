@@ -7,6 +7,10 @@
   "idFormat": "http://schema.org/url",
   "sampleId": "https://example.com/person/",
   "requiredFields": [],
+  "requiredOptions":[
+    {"description":["If the direct permission for personal information to be published is given by the individual, the data publisher should provide either a name or a combination of familyName and givenName."],
+      "options": ["name","givenName","familyName"]
+    }],
   "fields": {
     "email": {
       "fieldName": "email",

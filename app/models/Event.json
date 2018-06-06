@@ -11,7 +11,7 @@
     {"description":["While these properties are marked as optional, a data publisher must provide either a schema:startDate or specify a oa:schedule for an event."],
       "options": ["startDate","schedule"]
     }],
-  "recommendedFields": ["description","duration","organizer","eventStatus","category"],
+  "recommendedFields": ["description","duration","organizer","eventStatus"],
   "inSpec": ["id","identifier","url","name","description","image","startDate","endDate","duration","location","organizer","contributor","maximumAttendeeCapacity","remainingAttendeeCapacity","eventStatus","subEvent","superEvent","schedule","activity","category","ageRange","genderRestriction","programme","attendeeInstructions","leader","accessibilitySupport","accessibilityInformation","isCoached","level","meetingPoint"],
   "fields": {
     "context": {
@@ -28,7 +28,7 @@
     },
     "accessibilitySupport":{
       "fieldName": "accessibilitySupport",
-      "description": ["Used to specify the types of disabilities or impairments that are supported at an event"],
+      "description": ["Used to specify the types of disabilities or impairments that are supported at an event."],
       "example": "TODO"
     },
     "activity":{
@@ -37,7 +37,7 @@
       "alternativeModels": ["ArrayOf#Concept"],
       "alternativeTypes": ["http://schema.org/Text", "ArrayOf#http://schema.org/Text"],
       "context": "!activity",
-      "description": ["Specifies the physical activity or activities that will take place during an event"],
+      "description": ["Specifies the physical activity or activities that will take place during an event."],
       "example":
       {
         "id": "https://example.com/reference/activities#Speedball",
@@ -74,8 +74,8 @@
     "contributor":{
       "fieldName": "contributor",
       "model": "#Person",
-      "description": ["TODO"],
-      "example": "TODO"
+      "description": ["A Person who contributes to the facilitation of the Event."],
+      "example": {}
     },
     "description":{
       "fieldName": "description",
@@ -107,12 +107,12 @@
       "fieldName": "eventSchedule",
       "model": "#Schedule",
       "description": ["TODO"],
-      "example": "TODO"
+      "example": {}
     },
     "facility":{
       "fieldName":"facility",
       "requiredType":"ArrayOf#Place",
-      "description": ["TODO"],
+      "description": ["The facilities contained within a Place (location). This could include tennis courts, swimming pools etc."],
       "example": [
         {
             "description": "Olympic length pool",
@@ -138,7 +138,7 @@
     "image": {
       "fieldName": "image",
       "model": "#ImageObject",
-      "description": ["An image or photo that depicts the event, e.g. a photo taken at a previous event"],
+      "description": ["An image or photo that depicts the event, e.g. a photo taken at a previous event."],
       "example": {
             "thumbnail": "http://example.com/static/image/speedball_thumbnail.jpg",
             "type": "ImageObject",
@@ -147,9 +147,9 @@
     },
     "isAccessibleForFree": {
       "fieldName": "isAccessibleForFree",
-      "requiredType": "TODO",
-      "description": ["TODO"],
-      "example": "TODO"
+      "requiredType": "http://schema.org/Boolean",
+      "description": ["Whether the Event is accessible without charge."],
+      "example": true
     },
     "isCoached": {
       "fieldName": "isCoached",
@@ -166,7 +166,7 @@
     "leader": {
       "fieldName": "leader",
       "model":"#Person",
-      "description": ["Refers to a person (schema:Person) who will be leading an event. E.g. a coach. This is a more specific role than an organiser or a contributor"],
+      "description": ["Refers to a person (schema:Person) who will be leading an event. E.g. a coach. This is a more specific role than an organiser or a contributor. The person will need to have given their consent for their personal information to be present in the Open Data."],
       "example":
       {
         "familyName": "Smith",
@@ -207,7 +207,7 @@
     "maximumAttendeeCapacity": {
       "fieldName": "maximumAttendeeCapacity",
       "requiredType": "http://schema.org/Integer",
-      "description": ["The maximum capacity of the event"],
+      "description": ["The maximum capacity of the Event."],
       "example": 30
     },
     "meetingPoint": {
@@ -225,7 +225,7 @@
     "offers": {
       "fieldName": "offers",
       "requiredType":"ArrayOf#Offer",
-      "description": ["TODO"],
+      "description": ["The available offers for this Event."],
       "example": [
         {
             "availabilityEnds": "2014-04-29T12:14:35",
@@ -255,7 +255,7 @@
     "potentialAction": {
       "fieldName": "potentialAction",
       "requiredType": "ArrayOf#ReserveAction",
-      "description": ["TODO"],
+      "description": ["The possible actions that a user may make. e.g. Book."],
       "example":
       [
         {
@@ -273,13 +273,18 @@
     "programme": {
       "fieldName": "programme",
       "model": "#Brand",
-      "description": ["Indicates that an event will be organised according to a specific Programme"],
-      "example": "TODO"
+      "description": ["Indicates that an event will be organised according to a specific Programme."],
+      "example": {
+        "name": "Play Ball!",
+        "description": "Play Ball! is a series of games for people of all abilities.",
+        "url": "http://example.com/play_ball",
+        "logo": "http://example.com/images/play_ball_logo.svg"
+      }
     },
     "remainingAttendeeCapacity": {
       "fieldName": "remainingAttendeeCapacity",
       "requiredType": "http://schema.org/Integer",
-      "description": ["The number of places that are still available for the event"],
+      "description": ["The number of places that are still available for the Event."],
       "example": 20
     },
     "sameAs": {
@@ -308,13 +313,13 @@
     "url": {
       "fieldName": "url",
       "requiredType": "http://schema.org/url",
-      "description": ["A URL to a web page (or section of a page) that describes the event"],
-      "example": "TODO"
+      "description": ["A URL to a web page (or section of a page) that describes the event."],
+      "example": "https://example.com/event/1234"
     },
     "waitingListCount": {
       "fieldName": "waitingListCount",
       "requiredType": "http://schema.org/Integer",
-      "description": ["TODO"],
+      "description": ["The number of people already in the waiting list for this particular Event."],
       "example": 10
     }
   },

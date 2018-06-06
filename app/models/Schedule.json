@@ -43,12 +43,13 @@
       "example": 3,
       "description": ["Defines the number of times a recurring Event will take place."]
     },
-    "repeatCount": {
-      "fieldName": "repeatCount",
+    "repeatFrequency": {
+      "fieldName": "repeatFrequency",
       "requiredType": "http://schema.org/Duration",
       "alternativeTypes": ["http://schema.org/Text"],
       "example": "TODO",
-      "description": ["Defines the frequency at which Events will occur according to a Schedule. The intervals between events should be defined as a Duration of time."]
+      "description": ["Defines the frequency at which Events will occur according to a Schedule. The intervals between events should be defined as a Duration of time."],
+      "standard": "$ISO8601Duration"
     }
   }
 }

@@ -2,6 +2,7 @@
   "type": "Ammenity",
   "sameAs": null,
   "hasId": false,
+  "requiredFields": ["name","type","value"],
   "fields": {
     "name": {
       "fieldName": "name",

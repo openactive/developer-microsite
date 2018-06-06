@@ -3,7 +3,8 @@
   "sameAs": null,
   "derivedFrom": "http://schema.org/ReserveAction",
   "hasId": false,
-  "requiredFields": [],
+  "requiredFields": ["name", "target"],
+  "recommendedFields": [],
   "fields": {
     "name":{
       "fieldName": "name",

@@ -2,15 +2,61 @@
 {% set title = 'Models'%}
 
 {% block mainpanel %}
+<style>
+body {
+  padding-top: 3.5rem;
+}
+</style>
 <div class="container">
 
-  <h2>Models</h2>
-  <br />
-  <ul>
-  {% for model in models %}
-    <li> <a href="/models/{{model.lower()}}">{{model}}</a> </li>
-  {% endfor %}
-  </ul>
+<main role="main">
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Models</h1>
+      <p>
+        The Open Active Data Model uses models derived from <a href="http://schema.org">Schema.org</a> and <a href="https://www.w3.org/2004/02/skos/">Simple Knowledge Organization System (SKOS)</a>. The specification adopts the same approach as Schema.org and encourages the use of URLs as unique identifiers for resources.
+      </p>
+      <p>
+        Information about Events, Places, Organizations and other types of resources should already have been published online to make that information accessible to users. Using existing URLs as identifiers avoids the need to define a new identifier scheme for resources described in opportunity data.
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h4>Event - the core model for opportunity data</h4>
+        <br />
+        {% for model in models %}
+          {% if model in event_core %}
+            <li> <a href="/models/{{model.lower()}}">{{model}}</a> </li>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="col-md-4">
+        <h4>Models used to describe of an Event</h4>
+        <br />
+        {% for model in models %}
+          {% if model in event_elements %}
+            <li> <a href="/models/{{model.lower()}}">{{model}}</a> </li>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="col-md-4">
+        <h4>Models relating to Booking</h4>
+        <br />
+        {% for model in models %}
+          {% if model in event_booking %}
+            <li> <a href="/models/{{model.lower()}}">{{model}}</a> </li>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+
+  </div> <!-- /container -->
+
+</main>
 
 </div>
 {% endblock %}

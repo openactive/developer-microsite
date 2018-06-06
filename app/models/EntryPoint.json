@@ -3,7 +3,8 @@
   "sameAs": null,
   "derivedFrom": "http://schema.org/EntryPoint",
   "hasId": false,
-  "requiredFields": [],
+  "requiredFields": ["httpMethod", "url"],
+  "recommendedFields": ["encodingType"],
   "fields": {
     "encodingType": {
       "fieldName": "encodingType",

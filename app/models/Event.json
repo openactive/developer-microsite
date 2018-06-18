@@ -5,7 +5,7 @@
   "derivedFrom": "http://schema.org/Event",
   "hasId": true,
   "idFormat": "http://schema.org/url",
-  "sampleId": "https://example.com/event/",
+  "sampleId": "https://example.com/events/",
   "requiredFields": ["context","activity","location","name","url"],
   "requiredOptions":[
     {"description":["While these properties are marked as optional, a data publisher must provide either a schema:startDate or specify a oa:schedule for an event."],
@@ -314,7 +314,7 @@
       "fieldName": "url",
       "requiredType": "http://schema.org/url",
       "description": ["A URL to a web page (or section of a page) that describes the event."],
-      "example": "https://example.com/event/1234"
+      "example": "https://example.com/events/1234"
     },
     "waitingListCount": {
       "fieldName": "waitingListCount",

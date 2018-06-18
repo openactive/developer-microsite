@@ -5,7 +5,15 @@ Microsite for the OpenActive Developer engagement
 
 Install Python 3. It will need to be 3.6 if it's to be deployed to AWS. Best distribution for good collection of tools is Anaconda - https://www.anaconda.com/download/
 
+If you're using Anaconda, then you can do:
+
+`conda create -n env python=3.6 anaconda`
+
+Or with `virtualenv`
+
 `virtualenv -p python3 env`
+
+Then activate the virtual environment
 
 `source activate env`
 

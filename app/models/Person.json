@@ -40,12 +40,26 @@
       "example": "Daley",
       "description": ["An given name of the person","This person must give direct permission for their personal information to be shared as part of the Open Data."]
     },
+    "jobTitle": {
+      "fieldName": "jobTitle",
+      "sameAs": "http://schema.org/name",
+      "requiredType": "http://schema.org/Text",
+      "example": "Chief Coach",
+      "description": ["The job title for the person, especially used in the context of a leader.","This person must give direct permission for their personal information to be shared as part of the Open Data."]
+    },
     "name": {
       "fieldName": "name",
       "sameAs": "http://schema.org/name",
       "requiredType": "http://schema.org/Text",
       "example": "Daley Thompson",
       "description": ["An full name for the person, where structured data around givenName and familyName is not available.","This person must give direct permission for their personal information to be shared as part of the Open Data."]
+    },
+    "telephone": {
+      "fieldName": "telephone",
+      "sameAs": "http://schema.org/name",
+      "requiredType": "http://schema.org/Text",
+      "example": "01 811 8055",
+      "description": ["A contact telephone number for the person.","This person must give direct permission for their personal information to be shared as part of the Open Data."]
     },
     "url": {
       "fieldName": "url",

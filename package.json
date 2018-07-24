@@ -1,0 +1,12 @@
+{
+  "name": "developer-microsite",
+  "description": "Microsite for the OpenActive Developer engagement",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openactive/developer-microsite.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "openactive-data-models": "github:openactive/data-models"
+  }
+}

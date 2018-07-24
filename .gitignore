@@ -102,3 +102,6 @@ ENV/
 
 #OSX
 **/.DS_Store
+
+# npm
+node_modules

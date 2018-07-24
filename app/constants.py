@@ -1,3 +1,5 @@
+from os import path
+
 content_items = ['index', 'specifications', 'getting-started', 'guidance']
 
 navbar_items = [
@@ -19,3 +21,5 @@ navbar_items = [
     },
 
 ]
+
+models_path = path.abspath('../node_modules/openactive-data-models/src/models')

@@ -1,5 +1,6 @@
-from flask import Flask, jsonify, request, Markup, Response, send_from_directory
+from flask import Flask, jsonify, request, Markup, Response, send_from_directory, abort
 from flaskext.markdown import Markdown
+from os import path
 import markdown
 
 import json
@@ -31,12 +32,12 @@ def content_handler(view='index'):
             content = view_contents.split('---')[1]
         return functions.render_view('content.html', {'title': title, 'content': content})
     else:
-        return "404"
+        abort(404)
 
 
 @app.route("/models")
 def models_home():
-    filepath = 'models/model_list.json'
+    filepath = path.join(constants.models_path, 'model_list.json')
     model_list = functions.read_file(filepath, json_format=True)
     models = model_list['models_order']
     event_core = model_list['event_core']
@@ -48,11 +49,11 @@ def models_home():
 @app.route("/models/<model>")
 def models(model):
     try:
-        models = functions.read_file('models/model_list.json', json_format=True)['models']
-        filepath = 'models/{modelname}.json'.format(modelname=models[model.lower()]['modelName'])
+        models = functions.read_file(path.join(constants.models_path, 'model_list.json'), json_format=True)['models']
+        filepath = path.join(constants.models_path, '{modelname}.json'.format(modelname=models[model.lower()]['modelName']))
         model = functions.read_file(filepath, json_format=True)
         model = functions.build_full_model(model)
         example = functions.build_example_json(model)
         return functions.render_view('model.html', {'model': model, 'example': json.dumps(example, indent=4, sort_keys=True)})
     except:
-        return "404"
+        abort(404)

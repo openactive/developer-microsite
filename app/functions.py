@@ -30,20 +30,24 @@ def build_full_model(model):
         }
         model['requiredFields'].append('type')
     if model['hasId']:
-        model['fields']['id'] = {
-            'fieldName': 'id',
-            'requiredType': 'http://schema.org/url',
-            'description': ['A unique url based identifier for the record'],
-            'example': ''
-        }
-        if model['hasId'] and model['sampleId']:
-            model['fields']['id']['example'] = model['sampleId'] + '1234'
-        model['fields']['identifier'] = {
-            'fieldName': 'identifier',
-            'description': ['A unique identifier for the record'],
-            'example': '1234'
-        }
-        model['requiredFields'].append('id')
+        if not 'id' in model['fields']:
+            model['fields']['id'] = {
+                'fieldName': 'id',
+                'requiredType': 'http://schema.org/url',
+                'description': ['A unique url based identifier for the record'],
+                'example': ''
+            }
+            if model['hasId'] and model['sampleId']:
+                model['fields']['id']['example'] = model['sampleId'] + '1234'
+        if not 'identifier' in model['fields']:
+            model['fields']['identifier'] = {
+                'fieldName': 'identifier',
+                'requiredType': 'http://schema.org/Text',
+                'description': ['A unique identifier for the record'],
+                'example': '1234'
+            }
+        if not 'id' in model['requiredFields']:
+            model['requiredFields'].append('id')
     model = build_field_arrays(model)
     model = build_option_html_from_markdown(model)
     model = build_field_description_html_from_markdown(model)
@@ -78,8 +82,9 @@ def build_field_description_html_from_markdown(model):
         model['fields'][field]['markdown'] = []
         for paragraph in model['fields'][field]['description']:
             model['fields'][field]['markdown'].append(Markup(markdown.markdown(paragraph)))
-        model['fields'][field]['inlineExample'] = json.dumps(
-            model['fields'][field]['example'], indent=4, sort_keys=True)
+        if 'example' in model['fields'][field]:
+            model['fields'][field]['inlineExample'] = json.dumps(
+                model['fields'][field]['example'], indent=4, sort_keys=True)
     return model
 
 
@@ -116,7 +121,8 @@ def build_field_arrays(model):
 def build_example_json(model):
     example = {}
     for field in model['fields']:
-        example[field] = model['fields'][field]['example']
+        if 'example' in model['fields'][field]:
+            example[field] = model['fields'][field]['example']
     example['type'] = model['type']
     if model['hasId'] and model['sampleId']:
         if not '#' in model['sampleId']:

@@ -43,11 +43,15 @@
   </td>
   <td>
     {% set paragraphs = field.markdown %}
+    {% if paragraphs %}
     {% include "fragments/markdown_paragraphs.html" %}
+    {% endif %}
+    {% if field.inlineExample %}
     <h6>Example</h6>
     <div class="well">
       <pre><code class="json">{{field.inlineExample}}</code></pre>
     </div>
+    {% endif %}
     {% if field.options %}
     <h6>Options</h6>
     <div class="well">

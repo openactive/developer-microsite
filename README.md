@@ -1,30 +1,38 @@
 # developer-microsite
 Microsite for the OpenActive Developer engagement
 
-## steps to build locally
+## Steps to build locally
 
 Install Python 3. It will need to be 3.6 if it's to be deployed to AWS. Best distribution for good collection of tools is Anaconda - https://www.anaconda.com/download/
 
 If you're using Anaconda, then you can do:
 
-`conda create -n env python=3.6 anaconda`
+```bash
+conda create -n env python=3.6 anaconda
+```
 
 Or with `virtualenv`
 
-`virtualenv -p python3 env`
+```bash
+virtualenv -p python3 env
+```
 
-Then activate the virtual environment
+Then install dependencies, activate the environment and run the app.
 
-`source activate env`
+```bash
+# Install npm dependencies (brings in data model definitions)
+npm install
 
-`pip install -r requirements.txt`
+# Activate the virtual environment
+source env/bin/activate env
 
-`export FLASK_APP=app.py`
-`export FLASK_DEBUG=1`
+# Install python requirements
+pip install -r requirements.txt
 
-change directory into the app/ folder
-
-`flask run`
+# Switch to the app directory and run
+cd app
+FLASK_APP=app.py FLASK_DEBUG=1 flask run
+```
 
 ## deploying to AWS Lambda using Zappa
 

@@ -46,7 +46,7 @@ def build_full_model(model):
                 'description': ['A unique identifier for the record'],
                 'example': '1234'
             }
-        if not 'id' in model['requiredFields']:
+        if not 'id' in model['requiredFields'] and not 'id' in model['recommendedFields']:
             model['requiredFields'].append('id')
     model = build_field_arrays(model)
     model = build_option_html_from_markdown(model)

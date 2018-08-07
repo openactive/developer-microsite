@@ -1,4 +1,4 @@
-content_items = ['index', 'specifications', 'getting-started', 'guidance']
+content_items = ['index', 'specifications', 'validation', 'getting-started', 'guidance']
 
 navbar_items = [
     {
@@ -8,6 +8,10 @@ navbar_items = [
     {
         "text": "Specifications",
         "path": "/specifications"
+    },
+    {
+        "text": "Validating your data",
+        "path": "/validation"
     },
     {
         "text": "Models",

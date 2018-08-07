@@ -1,0 +1,130 @@
+Validating your data
+---
+<style>
+body {
+  padding-top: 3.5rem;
+}
+</style>
+<main role="main">
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Validating your data</h1>
+      <p>OpenActive have developed a <a href="https://data-model-validator.herokuapp.com/">validation tool</a> to allow you to check that your JSON data feeds conform to the latest specification. Read on to see how to leverage this tool to assess your conformance.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p>
+          Navigate to the validation tool at <a href="https://data-model-validator.herokuapp.com/" target="_blank" class="link">https://data-model-validator.herokuapp.com/</a>.
+        </p>
+        <h3>
+          The validation console
+        </h3>
+        <figure class="figure float-right" style="width: 60%">
+          <img src="static/images/validation/validator-1.png" class="figure-img img-fluid rounded" alt="Validator homepage.">
+          <figcaption class="figure-caption">The OpenActive validator homepage.</figcaption>
+        </figure>
+        <p>
+          Once there, you will see a screen divided into two panels. The left panel allows you to enter data for validation, the right panel will show you the results of the validation.
+        </p>
+        <h4>Pasting in JSON</h4>
+        <p>
+          The left-hand panel accepts the JSON content that you would like to validate. You can paste JSON strings into the editor on the left, and click <strong>Validate</strong> to run the validation.
+        </p>
+        <p>
+          This JSON can take one of two forms:
+        </p>
+        <h5>
+          An RPDE feed
+        </h5>
+        <p>
+          The validator will perform limited validation on an <a href="https://www.openactive.io/realtime-paged-data-exchange/">RPDE feed</a>.
+        </p>
+        <p>
+          It will inspect the structure of the feed, and report on any missed fields.
+        </p>
+        <p>
+          It will also take the first 10 non-deleted items in the feed, and validate the <code>data</code> property against the <a href="https://www.openactive.io/modelling-opportunity-data/">Modelling Opportunity Data Specification</a>.
+        </p>
+        <h5>
+          A JSON data model
+        </h5>
+        <p>
+          This is a fragment of JSON that conforms to one of the models outlined in the <a href="/models">models</a> section. It will typically be an <a href="/models/event">Event</a> model, which will form the <code>data</code> portion of an RPDE feed item.
+        </p>
+        <p>
+          The validator will check whether this fragment conforms to the <a href="https://www.openactive.io/modelling-opportunity-data/">Modelling Opportunity Data Specification</a>.
+        </p>
+        <h4>Validating a URL</h4>
+        <figure class="figure float-right" style="width: 40%">
+          <img src="static/images/validation/validator-2.png" class="figure-img img-fluid rounded" alt="The UI for validating a URL.">
+          <figcaption class="figure-caption">Validating a URL.</figcaption>
+        </figure>
+        <p>
+          You can also ask the validator to validate a URL.
+        </p>
+        <p>
+          To do this:
+        </p>
+        <ul class="list">
+          <li class="list-item">Click <strong>Load URL</strong> in the top bar of the page</li>
+          <li class="list-item">Enter your URL into the text box</li>
+          <li class="list-item">Click <strong>Open</strong></li>
+        </ul>
+        <h4>Interpreting the results</h4>
+        <p>
+          After clicking <strong>Validate</strong>, the validator will return a list of notices, errors, warnings and tips.
+        </p>
+        <ul class="list">
+          <li class="list-item"><strong>Notices</strong> will notify you about any restrictions or limitationsthe validator has encountered whilst processing your data.</li>
+          <li class="list-item"><strong>Errors</strong> will notify you about any issues with your data that <strong>MUST</strong> be fixed.</li>
+          <li class="list-item"><strong>Warnings</strong> will notify you about any issues with your data that <strong>SHOULD</strong> be fixed.</li>
+          <li class="list-item"><strong>Tips</strong> will notify you about how data consumers may perceive your data, or how you could improve your data quality.</li>
+        </ul>
+        <p>
+          Clicking on a result will jump the editor on the left to the line and column that the result pertains to.
+        </p>
+        <h4>Managing the results</h4>
+        <figure class="figure float-right" style="width: 40%">
+          <img src="static/images/validation/validator-3.png" class="figure-img img-fluid rounded" alt="The UI for filtering the results.">
+          <figcaption class="figure-caption">Filtering the validation results.</figcaption>
+        </figure>
+        <p>
+          The validator affords lots of options for the filtering and sorting of the results.
+        </p>
+        <h5>Grouping the results</h5>
+        <p>
+          By default, similar notices will be grouped together.
+        </p>
+        <p>
+          To change this behaviour, simply:
+        </p>
+        <ul class="list">
+          <li class="list-item">Click <strong>Filters</strong>.</li>
+          <li class="list-item">Uncheck the <strong>Group messages</strong> option.</li>
+        </ul>
+        <h5>Filtering the results</h5>
+        <p>
+          You can show or hide different severities or categories by:
+        </p>
+        <ul class="list">
+          <li class="list-item">Click <strong>Filters</strong>.</li>
+          <li class="list-item">Check or uncheck the option you'd like to show or hide.</li>
+        </ul>
+        <h5>Sorting the results</h5>
+        <p>
+          You can sort the results either by line number or severity:
+        </p>
+        <ul class="list">
+          <li class="list-item">Click <strong>Sort</strong>.</li>
+          <li class="list-item">Check the sort option you desire.</li>
+        </ul>
+      </div>
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>

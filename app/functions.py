@@ -1,4 +1,5 @@
 from flask import Markup, render_template
+from os import path
 import markdown
 import json
 
@@ -72,7 +73,7 @@ def build_named_examples(model):
             for paragraph in example['description']:
                 example['markdown'].append(
                     Markup(markdown.markdown(paragraph)))
-            named_example = read_file('examples/' + example['example'], json_format=True)
+            named_example = read_file(path.join(constants.examples_path, example['example']), json_format=True)
             example['example'] = json.dumps(named_example, indent=4, sort_keys=True)
     return model
 

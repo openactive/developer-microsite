@@ -5,6 +5,12 @@
     {% else %}
       {{field.fieldName}}
     {% endif %}
+    
+    {% if field.inheritedFrom %}
+      <div class"pale">
+        Inherited from <a href="/models/{{ field.inheritedFrom[1:].lower() }}">{{field.inheritedFrom[1:]}}</a>
+      </div>
+    {% endif %}
   </td>
   <td width="150px">
 

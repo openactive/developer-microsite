@@ -48,12 +48,9 @@ def models_home():
 
 @app.route("/models/<model>")
 def models(model):
-    try:
-        models = functions.read_file(path.join(constants.models_path, 'model_list.json'), json_format=True)['models']
-        filepath = path.join(constants.models_path, '{modelname}.json'.format(modelname=models[model.lower()]['modelName']))
-        model = functions.read_file(filepath, json_format=True)
-        model = functions.build_full_model(model)
+    # try:
+        model = functions.read_full_model(model)
         example = functions.build_example_json(model)
         return functions.render_view('model.html', {'model': model, 'example': json.dumps(example, indent=4, sort_keys=True)})
-    except:
-        abort(404)
+    # except:
+    #     abort(404)

@@ -15,6 +15,10 @@
   {% if model.derivedFrom %}
     <p>This model is derived from <a href="{{ model.derivedFrom }}">{{ model.derivedFrom }}</a>.</p>
   {% endif %}
+  
+  {% if model.subClassOf %}
+    <p>This model is a subclass of <a href="/models/{{ model.subClassOf[1:].lower() }}">{{ model.subClassOf[1:] }}</a>.</p>
+  {% endif %}
   <hr />
 
   {% if model.description %}

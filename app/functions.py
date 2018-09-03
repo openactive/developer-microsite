@@ -19,8 +19,41 @@ def read_file(path, json_format=True):
         file_contents = open(path, 'r').read()
     return file_contents
 
+def read_full_model(model):
+    models = read_file(path.join(constants.models_path, 'model_list.json'), json_format=True)['models']
+    filepath = path.join(constants.models_path, '{modelname}.json'.format(modelname=models[model.lower()]['modelName']))
+    model = read_file(filepath, json_format=True)
+    model = build_full_model(model)
+    return model
+
+def merge_with_parent(paramModel, paramParentModel):
+    model = paramModel.copy()
+    parentModel = paramParentModel.copy()
+    for field in parentModel['fields']:
+        if not 'inheritedFrom' in parentModel['fields'][field]:
+            parentModel['fields'][field]['inheritedFrom'] = model['subClassOf']
+    parentModel['fields'].update(model['fields'])
+    model['fields'] = parentModel['fields'].copy()
+    parentModel.update(model)
+    if not 'subClassGraph' in parentModel:
+        parentModel['subClassGraph'] = []
+    parentModel['subClassGraph'].append(model['subClassOf'])
+    if 'notInSpec' in paramModel:
+        for field in paramModel['notInSpec']:
+            if field in parentModel['fields']:
+                del parentModel['fields'][field]
+            if field in parentModel['requiredFields']:
+                parentModel['requiredFields'].remove(field)
+            if field in parentModel['recommendedFields']:
+                parentModel['recommendedFields'].remove(field)
+            if field in parentModel['inSpec']:
+                parentModel['inSpec'].remove(field)
+    return parentModel
 
 def build_full_model(model):
+    if 'subClassOf' in model:
+        parentModel = read_full_model(model['subClassOf'][1:])
+        model = merge_with_parent(model, parentModel)
     if not 'type' in model['fields']:
         model['fields']['type'] = {
             'fieldName': 'type',
@@ -69,12 +102,13 @@ def build_option_html_from_markdown(model):
 def build_named_examples(model):
     if 'namedExamples' in model and model['namedExamples'] is not None:
         for example in model['namedExamples']:
-            example['markdown'] = []
-            for paragraph in example['description']:
-                example['markdown'].append(
-                    Markup(markdown.markdown(paragraph)))
-            named_example = read_file(path.join(constants.examples_path, example['example']), json_format=True)
-            example['example'] = json.dumps(named_example, indent=4, sort_keys=True)
+            if not 'markdown' in example:
+                example['markdown'] = []
+                for paragraph in example['description']:
+                    example['markdown'].append(
+                        Markup(markdown.markdown(paragraph)))
+                named_example = read_file(path.join(constants.examples_path, example['example']), json_format=True)
+                example['example'] = json.dumps(named_example, indent=4, sort_keys=True)
     return model
 
 
@@ -109,7 +143,7 @@ def build_field_arrays(model):
     if 'requiredOptions' in model:
         for option in model['requiredOptions']:
             for field in option['options']:
-                if field not in model['optionSetFields']:
+                if field not in model['optionSetFields'] and field in model['fields']:
                     model['optionSetFields'].append(field)
     model['optionalFields'] = [field for field in model['fields'] if field
                                not in model['requiredFields'] and field not in model['recommendedFields'] and field not in model['optionSetFields']]

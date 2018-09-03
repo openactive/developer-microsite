@@ -22,8 +22,8 @@ navbar_items = [
 
 ]
 
-models_package_path = path.abspath('../node_modules/openactive-data-models/src/');
-models_version = '2.0'
+models_package_path = path.abspath('../node_modules/@openactive/data-models/versions/');
+models_version = '2.x'
 
 models_path = path.join(models_package_path, models_version, 'models')
 examples_path = path.join(models_package_path, models_version, 'examples')

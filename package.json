@@ -7,6 +7,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "openactive-data-models": "github:openactive/data-models"
+    "@openactive/data-models": "github:openactive/data-models"
   }
 }

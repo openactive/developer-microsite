@@ -1,0 +1,1992 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>OpenActive Developers | Models | Event </title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <!-- Font awesome icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
+
+    
+
+    <style>body {
+        padding-top: 5rem;
+        color: #5A5A5A;
+      }
+    
+    ol.breadcrumb {
+      background-color: transparent;
+      padding-left: 0rem;
+    }
+
+    figure {
+      width: 80px;
+      margin-top: 5px;
+      margin-left: 5px;
+      margin-right: 15px;
+      margin-bottom: -5px
+    }
+
+    .navbar {
+      border-bottom: 2px #3B3089 solid;
+      background-color: #fff;
+    }
+
+    .first-item {
+      margin-left: 20px
+    }
+
+    h1, h2, h3, h4, h5 {
+      color: #3B3089
+    }
+
+    a {
+      color: #253882;
+      text-decoration: underline;
+    }
+
+    .main {
+      margin-top: 20px;
+    }
+
+    .nav-link, .nav-item {
+      color: #253882 !important;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background-color: #832b94;
+      color: #fff;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #fc9b9b;
+    }
+
+    .pale {
+      opacity: 0.3
+    }
+    </style>
+  </head>
+
+  <body>
+
+
+    <nav class="navbar navbar-expand-md navbar-light fixed-top container">
+  <figure id="logo" class="g-item logo" role="group">
+<a href="../index.html">
+
+
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 615.6 407" style="enable-background:new 0 0 615.6 407;" xml:space="preserve">
+<style type="text/css">.st0logo{fill:#F6A635;}
+.st1logo{fill:#E63B2E;}
+.st2logo{fill:url("#SVGID_1_");}
+.st3logo{fill:url("#SVGID_2_");}
+.st4logo{fill:#009EE3;}
+.st5logo{fill:#0067B1;}
+.st6logo{fill:#E11482;}
+.st7logo{fill:#74CBF3;}
+.st8logo{fill:#931E80;}
+.st9logo{fill:#433D90;}
+.st1logo0{fill:#253882;}
+.st1logo1{fill:#FFFFFF;}
+</style>
+<defs>
+<title>OpenActive Stacked Logo</title>
+<desc>OpenActive stacked logo in svg format</desc>
+</defs>
+<path class="st0logo" d="M386.7,207.5h160c45.4,0-8.8,24.2-8.8-16.7v12.4l18.6,18l13.2,7c9.6-2-2.2,14.8,6.6,26.1
+c5.6,7.2,26.7,25.5,27.8,27.3H491.6C446.2,281.6,386.7,248.4,386.7,207.5z"></path>
+<path class="st1logo" d="M572.3,221.3l5,8.4c9.6-2,6,13.4,14.8,24.8c5.6,7.2,14.9,25.3,16,27.1l-2.2,0.3c-15.7-0.9-144.4,4.6-171.6-74.2
+h128.2"></path>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="453.6201" y1="146.795" x2="670" y2="146.795" gradientTransform="matrix(1 0 0 -1 -374.44 224.9)">
+<stop offset="0" style="stop-color:#525252"></stop>
+<stop offset="7.000000e-02" style="stop-color:#787878"></stop>
+<stop offset="0.15" style="stop-color:#9C9C9C"></stop>
+<stop offset="0.24" style="stop-color:#BBBBBB"></stop>
+<stop offset="0.33" style="stop-color:#D4D4D4"></stop>
+<stop offset="0.44" style="stop-color:#E7E7E7"></stop>
+<stop offset="0.56" style="stop-color:#F5F5F5"></stop>
+<stop offset="0.71" style="stop-color:#FDFDFD"></stop>
+<stop offset="1" style="stop-color:#FFFFFF"></stop>
+</linearGradient>
+<path class="st2logo" d="M270.1,21.2C256.1,8.7,238,1.7,219.2,1.7h-140v76.4h140c42.2,0,76.4,34.2,76.4,76.3c0,0,0,0,0,0V78.1
+C295.6,56.4,286.3,35.7,270.1,21.2z"></path>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="453.645" y1="19.54" x2="453.645" y2="223.15" gradientTransform="matrix(1 0 0 -1 -374.44 224.9)">
+<stop offset="0" style="stop-color:#525252"></stop>
+<stop offset="7.000000e-02" style="stop-color:#787878"></stop>
+<stop offset="0.15" style="stop-color:#9C9C9C"></stop>
+<stop offset="0.24" style="stop-color:#BBBBBB"></stop>
+<stop offset="0.33" style="stop-color:#D4D4D4"></stop>
+<stop offset="0.44" style="stop-color:#E7E7E7"></stop>
+<stop offset="0.56" style="stop-color:#F5F5F5"></stop>
+<stop offset="0.71" style="stop-color:#FDFDFD"></stop>
+<stop offset="1" style="stop-color:#FFFFFF"></stop>
+</linearGradient>
+<path class="st3logo" d="M79.2,205.4V78.1c0-42.2,34.2-76.4,76.4-76.4H79.2C37,1.8,2.9,35.9,2.9,78.1V129C2.9,171.2,37,205.4,79.2,205.4
+z"></path>
+<path class="st4logo" d="M270.1,21.2C256.1,8.7,238,1.7,219.2,1.7h-140v76.4h140c0.3,0.3,76.4,82.8,76.4,125v-125
+C295.6,56.4,286.3,35.7,270.1,21.2z"></path>
+<path class="st5logo" d="M79.2,205.4V77.7c-0.3,0.3,81.7-76,81.7-75.9s0.1,0,0,0H79.2C37,1.8,2.9,36,2.9,78.1V129
+C2.9,171.2,19.9,205.4,79.2,205.4z"></path>
+<path class="st6logo" d="M478.1,0.1l130,281.4l0,0c0.2-0.4-77.7,0.4-114.2-74.5L431.8,73C416.1,39,440.8,0.1,478.1,0.1L478.1,0.1z"></path>
+<path class="st7logo" d="M219.2,78.1V205c0,49.5-73.9,76.7-116.1,76.7h116.1c42.2,0,76.4-34.2,76.4-76.4v-50.9
+C295.6,154.5,219.2,78,219.2,78.1z"></path>
+<path class="st8logo" d="M478.7,0.1c0,0-93.9-6.6-134.8,93.4c-52.4,128.3-86.7,188.1-215.8,188.1h121c65.6,0,104.8-24.1,141.8-96.5
+C425.8,117,430,43,478.7,0.1z"></path>
+<path class="st7logo" d="M194.4,30.2"></path>
+<path class="st1logo" d="M507.3,177.3"></path>
+<path class="st1logo" d="M287.6,192.1"></path>
+<path class="st7logo" d="M252,88.9"></path>
+<path class="st9logo" d="M2.9,190.2c0,69,57,91.5,76.6,91.5h59.2c42.8,0,80.3-43.3,80.3-76.4H79.3c0.3,0.3-76.4-88.1-76.4-88.1"></path>
+<path class="st1logo0" d="M493.2,325.7H512l14,41.9l14.1-41.9h18.5l-24.6,63h-16.1L493.2,325.7z"></path>
+<path class="st1logo0" d="M473.5,325.7h17.8v62.6h-17.8V325.7z"></path>
+<path class="st1logo0" d="M0,347.6v-0.2c0-23.2,18.3-42.3,43.5-42.3s43.3,18.8,43.3,42v0.2c0,23.2-18.3,42.3-43.5,42.3S0,370.9,0,347.6z
+M68.1,347.6v-0.2c0-14-10.3-25.7-24.8-25.7s-24.5,11.4-24.5,25.5v0.2c0,14,10.3,25.7,24.8,25.7S68.1,361.6,68.1,347.6z"></path>
+<path class="st1logo0" d="M92.1,325.7h17.8v9c4.3-5.8,10.3-10.2,19.5-10.2c14.6,0,28.5,11.4,28.5,32.3v0.2c0,20.9-13.7,32.3-28.5,32.3
+c-9.5,0-15.3-4.3-19.5-9.3V407H92.1V325.7z M140.1,357.1v-0.2c0-10.4-7-17.3-15.3-17.3s-15.2,6.9-15.2,17.3v0.2
+c0,10.4,6.9,17.3,15.2,17.3S140.1,367.6,140.1,357.1L140.1,357.1z"></path>
+<path class="st1logo0" d="M161.5,357.3v-0.2c0-17.9,12.7-32.6,30.9-32.6c20.9,0,30.5,16.2,30.5,34c0,1.4-0.1,3-0.2,4.7h-43.5
+c1.8,8.1,7.3,12.3,15.3,12.3c6,0,10.3-1.9,15.2-6.4l10.2,9c-5.8,7.2-14.2,11.7-25.6,11.7C175.4,389.7,161.5,376.5,161.5,357.3z
+M205.6,352.1c-1-7.9-5.7-13.3-13.2-13.3s-12.1,5.3-13.5,13.3H205.6z"></path>
+<path class="st1logo0" d="M228,325.7h17.8v8.9c4.1-5.3,9.3-10,18.3-10c13.4,0,21.2,8.9,21.2,23.2v40.5h-17.8v-35c0-8.4-4-12.7-10.7-12.7
+s-11.1,4.3-11.1,12.7v34.9H228V325.7z"></path>
+<path class="st1logo0" d="M323.4,306H340l35,82.3h-18.8l-7.5-18.3h-34.6l-7.5,18.3h-18.3L323.4,306z M342.3,354.1l-10.9-26.5l-10.9,26.5
+H342.3z"></path>
+<path class="st1logo0" d="M432.7,325.7v-16h17.8v16h14.7v15.2h-14.7v26.8c0,4.1,1.8,6.1,5.7,6.1c3.1,0,6.1-0.8,8.8-2.2v14.2
+c-4.2,2.5-9.1,3.8-14,3.6c-10.9,0-18.2-4.3-18.2-18.8v-29.7"></path>
+<path class="st1logo0" d="M554.2,357.3v-0.2c0-17.9,12.7-32.6,30.9-32.6c20.9,0,30.5,16.2,30.5,34c0,1.4-0.1,3-0.2,4.7h-43.5
+c1.8,8.1,7.3,12.3,15.3,12.3c6,0,10.3-1.9,15.2-6.4l10.2,9c-5.8,7.2-14.2,11.7-25.6,11.7C568,389.7,554.2,376.5,554.2,357.3z
+M598.3,352.1c-1-7.9-5.7-13.3-13.2-13.3s-12.2,5.3-13.5,13.3H598.3z"></path>
+<rect x="414.4" y="323.5" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -111.8271 398.4354)" class="st1logo1" width="21.3" height="21.3"></rect>
+<path class="st1logo0" d="M370.1,357.3v-0.2c0-17.9,13.7-32.6,32.8-32.6c11.8,0,19.1,4,25,10.5L417,346.7c-4-4.2-7.9-6.9-14.2-6.9
+c-8.9,0-15.2,7.8-15.2,17v0.2c0,9.6,6.2,17.3,15.9,17.3c6,0,10-2.6,14.4-6.7l10.4,10.5c-6.1,6.7-13.1,11.5-25.6,11.5
+C383.9,389.7,370.1,375.2,370.1,357.3z"></path>
+</svg>
+</a>
+</figure>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      
+        
+          <li class="nav-item first-item">
+            <a class="nav-link" href="https://www.openactive.io/getting-started/">Getting Started</a>
+          </li>
+        
+      
+        
+          <li class="nav-item">
+            <a class="nav-link" href="../specifications.html">Specifications</a>
+          </li>
+        
+      
+        
+          <li class="nav-item">
+            <a class="nav-link" href="../models.html">Models</a>
+          </li>
+        
+      
+        
+          <li class="nav-item">
+            <a class="nav-link" href="../guidance.html">Guidance</a>
+          </li>
+        
+      
+    </ul>
+  </div>
+</nav>
+    <main role="main" class="main">
+        
+<div class="container">
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page"><a href="../models.html">Models</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Event</li>
+  </ol>
+</nav>
+
+  <h1>Event</h1>
+  
+    <p>This model is derived from <a href="http://schema.org/Event">http://schema.org/Event</a>.</p>
+  
+  <hr />
+
+  
+    
+      
+        <h3>Example heading</h3>
+      
+      
+      
+  <p>This is the first paragraph</p>
+
+  <p>This is the second paragraph</p>
+
+    
+    <hr />
+  
+
+
+  <h2>Fields</h2>
+  <br />
+  
+    <h4>Required fields</h4>
+    <table class="table table-bordered" width="100%">
+      
+          
+          <tr>
+  <td width="250px"  class="table-primary">
+    
+      activity
+    
+  </td>
+  <td width="150px">
+
+    
+      
+      
+  <a href='concept.html'>Concept</a>
+
+    
+
+    
+
+    
+      <div class="pale">OR</div>
+      
+        
+        
+  
+  Array of <a href="concept.html">Concept</a>
+
+        
+      
+    
+
+    
+      <div class="pale">OR</div>
+      
+        
+        
+  
+    
+    <a href="http://schema.org/Text" target="_blank">Text&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+        
+        <div class="pale">OR</div>
+        
+        
+        
+        
+  
+  
+  Array of <a href="http://schema.org/Text" target="_blank">Text&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+
+        
+        
+    
+
+  </td>
+  <td>
+    
+    
+  <p>Specifies the physical activity or activities that will take place during an event.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">{
+    &#34;id&#34;: &#34;https://example.com/reference/activities#Speedball&#34;,
+    &#34;inScheme&#34;: &#34;https://example.com/reference/activities&#34;,
+    &#34;prefLabel&#34;: &#34;Speedball&#34;,
+    &#34;type&#34;: &#34;Concept&#34;
+}</code></pre>
+    </div>
+    
+  </td>
+</tr>
+      
+          
+          <tr>
+  <td width="250px"  class="table-primary">
+    
+      @context
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/url" target="_blank">url&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;https://www.openactive.io/ns/oa.jsonld&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+      
+          
+          <tr>
+  <td width="250px"  class="table-primary">
+    
+      id
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/url" target="_blank">url&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>A unique url based identifier for the record</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;https://example.com/events/1234&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+      
+          
+          <tr>
+  <td width="250px"  class="table-primary">
+    
+      location
+    
+  </td>
+  <td width="150px">
+
+    
+      
+      
+  <a href='place.html'>Place</a>
+
+    
+
+    
+
+    
+      <div class="pale">OR</div>
+      
+        
+        
+  <a href='postaladdress.html'>PostalAddress</a>
+
+        
+      
+    
+
+    
+      <div class="pale">OR</div>
+      
+        
+        
+  
+    
+    <a href="http://schema.org/Text" target="_blank">Text&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+        
+        
+    
+
+  </td>
+  <td>
+    
+    
+  <p>The location at which the event will take place. Or, in the case of events that may span multiple locations, the initial meeting or starting point.</p>
+
+  <p>It is recommended that locations should be specified as a <a href="place.html">Place</a> complete with a fully described geographic location and/or address.</p>
+<p>If only an address is available then this should be described as a <a href="postaladdress.html">PostalAddress</a>.</p>
+
+  <p>Applications may use <a href="http://schema.org/Text">schema:Text</a> to provide a more general description of a location ("In Victoria Park, near the lake"), but this is not recommended: consuming applications will be unable to help users discover opportunities based on their location.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">{
+    &#34;address&#34;: {
+        &#34;addressLocality&#34;: &#34;New Malden&#34;,
+        &#34;addressRegion&#34;: &#34;London&#34;,
+        &#34;postalCode&#34;: &#34;NW5 3DU&#34;,
+        &#34;streetAddress&#34;: &#34;Raynes Park High School, 46A West Barnes Lane&#34;,
+        &#34;type&#34;: &#34;PostalAddress&#34;
+    },
+    &#34;description&#34;: &#34;Raynes Park High School in London&#34;,
+    &#34;geo&#34;: {
+        &#34;latitude&#34;: 51.4034423828125,
+        &#34;longitude&#34;: -0.2369088977575302,
+        &#34;type&#34;: &#34;GeoCoordinates&#34;
+    },
+    &#34;id&#34;: &#34;https://example.com/locations/1234ABCD&#34;,
+    &#34;identifier&#34;: &#34;1234ABCD&#34;,
+    &#34;name&#34;: &#34;Raynes Park High School&#34;,
+    &#34;telephone&#34;: &#34;01253 473934&#34;,
+    &#34;type&#34;: &#34;Place&#34;
+}</code></pre>
+    </div>
+    
+  </td>
+</tr>
+      
+          
+          <tr>
+  <td width="250px"  class="table-primary">
+    
+      name
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/Text" target="_blank">Text&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>The name of the event</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;Speedball&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+      
+          
+          <tr>
+  <td width="250px"  class="table-primary">
+    
+      type
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/Text" target="_blank">Text&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>The type of object, in this case Event</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;Event&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+      
+          
+          <tr>
+  <td width="250px"  class="table-primary">
+    
+      url
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/url" target="_blank">url&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>A URL to a web page (or section of a page) that describes the event.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;https://example.com/events/1234&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+      
+    </table>
+  
+
+  
+    <h4>Required options</h4>
+    
+      
+      
+  <p>While these properties are marked as optional, a data publisher must provide either a schema:startDate or specify a oa:schedule for an event.</p>
+
+      <table class="table table-bordered" width="100%">
+        
+            
+            <tr>
+  <td width="250px"  class="table-primary">
+    
+      startDate
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/DateTime" target="_blank">DateTime&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>The start date and time of the event. Can be specified as a schema:Date or schema:DateTime.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;2018-01-27T12:00:00Z&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+        
+            
+            <tr>
+  <td width="250px"  class="table-primary">
+    
+      schedule
+    
+  </td>
+  <td width="150px">
+
+    
+      
+      
+  <a href='schedule.html'>Schedule</a>
+
+    
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>A schedule defines a repeating time period used to describe a regularly occurring Event.</p>
+
+  <p>**Note: this is a draft Schema.org property. See https://github.com/openactive/modelling-opportunity-data/issues/2 for discussion.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;TODO&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+        
+      </table>
+
+    
+  
+
+
+  
+    <h4>Recommended fields</h4>
+    <table class="table table-bordered">
+      
+          
+          <tr>
+  <td width="250px"  class="table-primary">
+    
+      description
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/Text" target="_blank">Text&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>A free text description of the event</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;An fast paced game that incorporates netball, handball and football.&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+      
+          
+          <tr>
+  <td width="250px"  class="table-primary">
+    
+      duration
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/Text" target="_blank">Text&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>The duration of the event given in [ISO8601] format.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;PT1H&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+      
+          
+          <tr>
+  <td width="250px"  class="table-primary">
+    
+      eventStatus
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/url" target="_blank">url&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>The status of an event. Can be used to indicate rescheduled or cancelled events</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;http://schema.org/EventScheduled&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+      
+          
+          <tr>
+  <td width="250px"  class="table-primary">
+    
+      genderRestriction
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/url" target="_blank">url&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>Indicates that an event is restricted to male, female or a mixed audience. If a gender restriction isn't specified then applications should assume that an event is suitable for a mixed audience</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;http://openactive.io/ns#Female&#34;</code></pre>
+    </div>
+    
+    <h6>Options</h6>
+    <div class="well">
+      <pre><code class="json">http://openactive.io/ns#Female<br />http://openactive.io/ns#Male<br />http://openactive.io/ns#None<br /></code></pre>
+    </div>
+    
+  </td>
+</tr>
+      
+          
+          <tr>
+  <td width="250px"  class="table-primary">
+    
+      organizer
+    
+  </td>
+  <td width="150px">
+
+    
+      
+      
+  <a href='organization.html'>Organization</a>
+
+    
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>The person or organization ultimately responsible for an event. An organizer might be an  schema:Organization or a schema:Person.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">{
+    &#34;name&#34;: &#34;Central Speedball Association&#34;,
+    &#34;type&#34;: &#34;Organization&#34;,
+    &#34;url&#34;: &#34;http://www.speedball-world.com&#34;
+}</code></pre>
+    </div>
+    
+  </td>
+</tr>
+      
+    </table>
+  
+
+  
+  <h4>Optional fields</h4>
+  <table class="table table-bordered">
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      accessibilityInformation
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>Provide additional, specific documentation for participants about how disabilities are, or can be supported at the Event.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;TODO&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      accessibilitySupport
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>Used to specify the types of disabilities or impairments that are supported at an event.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;TODO&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      ageRange
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/Text" target="_blank">Text&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>Indicates that an event is suitable for a specific age range. If only a single age is specified then this is assumed to be a minimum age. Age ranges can be specified as follows: 18-30</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;16-55&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      attendeeInstructions
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/Text" target="_blank">Text&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>Provides additional notes and instructions for event attendees. E.g. more information on how to find the event, what to bring, etc.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;TODO&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      category
+    
+  </td>
+  <td width="150px">
+
+    
+      
+      
+  <a href='concept.html'>Concept</a>
+
+    
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>Provides a set of tags that help categorise and describe an event, e.g. its intensity, purpose, etc.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">{
+    &#34;id&#34;: &#34;https://example.com/reference/categories#Top%20Club%20Level&#34;,
+    &#34;inScheme&#34;: &#34;https://example.com/reference/categories&#34;,
+    &#34;prefLabel&#34;: &#34;Top Club Level&#34;,
+    &#34;type&#34;: &#34;Concept&#34;
+}</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      contributor
+    
+  </td>
+  <td width="150px">
+
+    
+      
+      
+  <a href='person.html'>Person</a>
+
+    
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>A Person who contributes to the facilitation of the Event.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">{}</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      endDate
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/DateTime" target="_blank">DateTime&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>The end date and time of the event. Can be specified as a schema:Date or  schema:DateTime</p>
+
+  <p>It is recommended that publishers provide either an schema:endDate or a schema:duration for an event.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;2018-01-27T12:00:00Z&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      eventSchedule
+    
+  </td>
+  <td width="150px">
+
+    
+      
+      
+  <a href='schedule.html'>Schedule</a>
+
+    
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>TODO</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">{}</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      facility
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+  
+  Array of <a href="place.html" target="_blank">Place&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>The facilities contained within a Place (location). This could include tennis courts, swimming pools etc.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">[
+    {
+        &#34;description&#34;: &#34;Olympic length pool&#34;,
+        &#34;geo&#34;: {
+            &#34;latitude&#34;: 51.4034423828125,
+            &#34;longitude&#34;: -0.2369088977575302,
+            &#34;type&#34;: &#34;GeoCoordinates&#34;
+        },
+        &#34;id&#34;: &#34;https://example.com/locations/1234ABCD/facilities/123&#34;,
+        &#34;identifier&#34;: &#34;1234ABCD&#34;,
+        &#34;name&#34;: &#34;Swimming Pool&#34;,
+        &#34;type&#34;: &#34;Place&#34;
+    }
+]</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      identifier
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>A unique identifier for the record</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;1234&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      image
+    
+  </td>
+  <td width="150px">
+
+    
+      
+      
+  <a href='imageobject.html'>ImageObject</a>
+
+    
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>An image or photo that depicts the event, e.g. a photo taken at a previous event.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">{
+    &#34;thumbnail&#34;: &#34;http://example.com/static/image/speedball_thumbnail.jpg&#34;,
+    &#34;type&#34;: &#34;ImageObject&#34;,
+    &#34;url&#34;: &#34;http://example.com/static/image/speedball_large.jpg&#34;
+}</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      isAccessibleForFree
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/Boolean" target="_blank">Boolean&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>Whether the Event is accessible without charge.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">true</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      isCoached
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/Boolean" target="_blank">Boolean&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>A boolean property that indicates whether an Event will be coached. This flag allows an Event to be marked as being coached without having to specify a named individual as a coach. This addresses both privacy concerns and also scenarios where the actual coach may only be decided on the day.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;true&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      leader
+    
+  </td>
+  <td width="150px">
+
+    
+      
+      
+  <a href='person.html'>Person</a>
+
+    
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>Refers to a person (schema:Person) who will be leading an event. E.g. a coach. This is a more specific role than an organiser or a contributor. The person will need to have given their consent for their personal information to be present in the Open Data.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">{
+    &#34;familyName&#34;: &#34;Smith&#34;,
+    &#34;givenName&#34;: &#34;Nicole&#34;,
+    &#34;id&#34;: &#34;https://example.com/locations/1234ABCD/leaders/89&#34;,
+    &#34;identifier&#34;: 89,
+    &#34;type&#34;: &#34;Person&#34;
+}</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      level
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    TODO
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>A general purpose property for specifying the suitability of an event for different participant “levels”. E.g. beginner/intermediate/advanced. Or in the case of martial arts, specific belt requirements. Values should ideally be drawn from a controlled vocabulary.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;TODO&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      maximumAttendeeCapacity
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/Integer" target="_blank">Integer&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>The maximum capacity of the Event.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">30</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      meetingPoint
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    TODO
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>Instructions for the attendees of an Event about where they should meet the organizer or leader at the start of the event. Some larger locations may have several possible meeting points, so this property provides additional more specific directions.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">&#34;TODO&#34;</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      offers
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+  
+  Array of <a href="offer.html" target="_blank">Offer&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>The available offers for this Event.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">[
+    {
+        &#34;availabilityEnds&#34;: &#34;2014-04-29T12:14:35&#34;,
+        &#34;availabilityStarts&#34;: &#34;2014-04-29T12:14:35&#34;,
+        &#34;description&#34;: &#34;Winger space for Speedball.&#34;,
+        &#34;id&#34;: &#34;https://example.com/sessions/9209#/offers/1234&#34;,
+        &#34;identifier&#34;: 2134,
+        &#34;name&#34;: &#34;Speedball winger position&#34;,
+        &#34;price&#34;: 33,
+        &#34;priceCurrency&#34;: &#34;GBP&#34;,
+        &#34;type&#34;: &#34;Offer&#34;
+    }
+]</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      potentialAction
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+  
+  Array of <a href="reserveaction.html" target="_blank">ReserveAction&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>The possible actions that a user may make. e.g. Book.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">[
+    {
+        &#34;name&#34;: &#34;Book&#34;,
+        &#34;target&#34;: {
+            &#34;encodingType&#34;: &#34;application/vnd.openactive.v0.4+json&#34;,
+            &#34;httpMethod&#34;: &#34;POST&#34;,
+            &#34;type&#34;: &#34;EntryPoint&#34;,
+            &#34;url&#34;: &#34;https://example.com/orders&#34;
+        },
+        &#34;type&#34;: &#34;ReserveAction&#34;
+    }
+]</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      programme
+    
+  </td>
+  <td width="150px">
+
+    
+      
+      
+  <a href='brand.html'>Brand</a>
+
+    
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>Indicates that an event will be organised according to a specific Programme.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">{
+    &#34;description&#34;: &#34;Play Ball! is a series of games for people of all abilities.&#34;,
+    &#34;logo&#34;: &#34;http://example.com/images/play_ball_logo.svg&#34;,
+    &#34;name&#34;: &#34;Play Ball!&#34;,
+    &#34;url&#34;: &#34;http://example.com/play_ball&#34;
+}</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      remainingAttendeeCapacity
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/Integer" target="_blank">Integer&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>The number of places that are still available for the Event.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">20</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      sameAs
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+  
+  Array of <a href="http://schema.org/url" target="_blank">url&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>TODO</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">[
+    &#34;http://www.facebook.com/speedball&#34;,
+    &#34;https://www.twitter.com/speedball&#34;,
+    &#34;http://www.speedball-world.com&#34;
+]</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+      
+      <tr>
+  <td width="250px"  class="table-primary">
+    
+      waitingListCount
+    
+  </td>
+  <td width="150px">
+
+    
+
+    
+      
+      
+  
+    
+    <a href="http://schema.org/Integer" target="_blank">Integer&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i></a>
+  
+
+    
+
+    
+
+    
+
+  </td>
+  <td>
+    
+    
+  <p>The number of people already in the waiting list for this particular Event.</p>
+
+    <h6>Example</h6>
+    <div class="well">
+      <pre><code class="json">10</code></pre>
+    </div>
+    
+  </td>
+</tr>
+    
+  </table>
+  
+
+<h2>Examples</h2>
+<br />
+
+
+  
+    <h4>Describing a session</h4>
+    
+      <p>The type property indicates that the JSON is describing an Event rather than one of the other types of resource defined in the data model.</p>
+    
+      <p>This is a very basic session description. The following examples illustrate how to provide more detail.</p>
+    
+    <div class="well">
+      <pre><code class="json">{
+    &#34;@context&#34;: &#34;https://www.openactive.io/ns/oa.jsonld&#34;,
+    &#34;activity&#34;: &#34;Tai Chi&#34;,
+    &#34;location&#34;: {
+        &#34;address&#34;: {
+            &#34;addressLocality&#34;: &#34;Bristol&#34;,
+            &#34;postalCode&#34;: &#34;BS1 4SD&#34;,
+            &#34;streetAddress&#34;: &#34;1 High Street&#34;,
+            &#34;type&#34;: &#34;PostalAddress&#34;
+        },
+        &#34;name&#34;: &#34;ExampleCo Gym&#34;,
+        &#34;type&#34;: &#34;Place&#34;
+    },
+    &#34;name&#34;: &#34;Tai chi Class&#34;,
+    &#34;startDate&#34;: &#34;2017-03-22T20:00:00&#34;,
+    &#34;type&#34;: &#34;Event&#34;,
+    &#34;url&#34;: &#34;http://www.example.org/events/1&#34;
+}</code></pre>
+    </div>
+    <br />
+  
+
+
+
+<h4>Complete Example</h4>
+<div class="well">
+  <pre><code class="json">{
+    &#34;accessibilityInformation&#34;: &#34;TODO&#34;,
+    &#34;accessibilitySupport&#34;: &#34;TODO&#34;,
+    &#34;activity&#34;: {
+        &#34;id&#34;: &#34;https://example.com/reference/activities#Speedball&#34;,
+        &#34;inScheme&#34;: &#34;https://example.com/reference/activities&#34;,
+        &#34;prefLabel&#34;: &#34;Speedball&#34;,
+        &#34;type&#34;: &#34;Concept&#34;
+    },
+    &#34;ageRange&#34;: &#34;16-55&#34;,
+    &#34;attendeeInstructions&#34;: &#34;TODO&#34;,
+    &#34;category&#34;: {
+        &#34;id&#34;: &#34;https://example.com/reference/categories#Top%20Club%20Level&#34;,
+        &#34;inScheme&#34;: &#34;https://example.com/reference/categories&#34;,
+        &#34;prefLabel&#34;: &#34;Top Club Level&#34;,
+        &#34;type&#34;: &#34;Concept&#34;
+    },
+    &#34;context&#34;: &#34;https://www.openactive.io/ns/oa.jsonld&#34;,
+    &#34;contributor&#34;: {},
+    &#34;description&#34;: &#34;An fast paced game that incorporates netball, handball and football.&#34;,
+    &#34;duration&#34;: &#34;PT1H&#34;,
+    &#34;endDate&#34;: &#34;2018-01-27T12:00:00Z&#34;,
+    &#34;eventSchedule&#34;: {},
+    &#34;eventStatus&#34;: &#34;http://schema.org/EventScheduled&#34;,
+    &#34;facility&#34;: [
+        {
+            &#34;description&#34;: &#34;Olympic length pool&#34;,
+            &#34;geo&#34;: {
+                &#34;latitude&#34;: 51.4034423828125,
+                &#34;longitude&#34;: -0.2369088977575302,
+                &#34;type&#34;: &#34;GeoCoordinates&#34;
+            },
+            &#34;id&#34;: &#34;https://example.com/locations/1234ABCD/facilities/123&#34;,
+            &#34;identifier&#34;: &#34;1234ABCD&#34;,
+            &#34;name&#34;: &#34;Swimming Pool&#34;,
+            &#34;type&#34;: &#34;Place&#34;
+        }
+    ],
+    &#34;genderRestriction&#34;: &#34;http://openactive.io/ns#Female&#34;,
+    &#34;id&#34;: &#34;https://example.com/events/1234&#34;,
+    &#34;identifier&#34;: 1234,
+    &#34;image&#34;: {
+        &#34;thumbnail&#34;: &#34;http://example.com/static/image/speedball_thumbnail.jpg&#34;,
+        &#34;type&#34;: &#34;ImageObject&#34;,
+        &#34;url&#34;: &#34;http://example.com/static/image/speedball_large.jpg&#34;
+    },
+    &#34;isAccessibleForFree&#34;: true,
+    &#34;isCoached&#34;: &#34;true&#34;,
+    &#34;leader&#34;: {
+        &#34;familyName&#34;: &#34;Smith&#34;,
+        &#34;givenName&#34;: &#34;Nicole&#34;,
+        &#34;id&#34;: &#34;https://example.com/locations/1234ABCD/leaders/89&#34;,
+        &#34;identifier&#34;: 89,
+        &#34;type&#34;: &#34;Person&#34;
+    },
+    &#34;level&#34;: &#34;TODO&#34;,
+    &#34;location&#34;: {
+        &#34;address&#34;: {
+            &#34;addressLocality&#34;: &#34;New Malden&#34;,
+            &#34;addressRegion&#34;: &#34;London&#34;,
+            &#34;postalCode&#34;: &#34;NW5 3DU&#34;,
+            &#34;streetAddress&#34;: &#34;Raynes Park High School, 46A West Barnes Lane&#34;,
+            &#34;type&#34;: &#34;PostalAddress&#34;
+        },
+        &#34;description&#34;: &#34;Raynes Park High School in London&#34;,
+        &#34;geo&#34;: {
+            &#34;latitude&#34;: 51.4034423828125,
+            &#34;longitude&#34;: -0.2369088977575302,
+            &#34;type&#34;: &#34;GeoCoordinates&#34;
+        },
+        &#34;id&#34;: &#34;https://example.com/locations/1234ABCD&#34;,
+        &#34;identifier&#34;: &#34;1234ABCD&#34;,
+        &#34;name&#34;: &#34;Raynes Park High School&#34;,
+        &#34;telephone&#34;: &#34;01253 473934&#34;,
+        &#34;type&#34;: &#34;Place&#34;
+    },
+    &#34;maximumAttendeeCapacity&#34;: 30,
+    &#34;meetingPoint&#34;: &#34;TODO&#34;,
+    &#34;name&#34;: &#34;Speedball&#34;,
+    &#34;offers&#34;: [
+        {
+            &#34;availabilityEnds&#34;: &#34;2014-04-29T12:14:35&#34;,
+            &#34;availabilityStarts&#34;: &#34;2014-04-29T12:14:35&#34;,
+            &#34;description&#34;: &#34;Winger space for Speedball.&#34;,
+            &#34;id&#34;: &#34;https://example.com/sessions/9209#/offers/1234&#34;,
+            &#34;identifier&#34;: 2134,
+            &#34;name&#34;: &#34;Speedball winger position&#34;,
+            &#34;price&#34;: 33,
+            &#34;priceCurrency&#34;: &#34;GBP&#34;,
+            &#34;type&#34;: &#34;Offer&#34;
+        }
+    ],
+    &#34;organizer&#34;: {
+        &#34;name&#34;: &#34;Central Speedball Association&#34;,
+        &#34;type&#34;: &#34;Organization&#34;,
+        &#34;url&#34;: &#34;http://www.speedball-world.com&#34;
+    },
+    &#34;potentialAction&#34;: [
+        {
+            &#34;name&#34;: &#34;Book&#34;,
+            &#34;target&#34;: {
+                &#34;encodingType&#34;: &#34;application/vnd.openactive.v0.4+json&#34;,
+                &#34;httpMethod&#34;: &#34;POST&#34;,
+                &#34;type&#34;: &#34;EntryPoint&#34;,
+                &#34;url&#34;: &#34;https://example.com/orders&#34;
+            },
+            &#34;type&#34;: &#34;ReserveAction&#34;
+        }
+    ],
+    &#34;programme&#34;: {
+        &#34;description&#34;: &#34;Play Ball! is a series of games for people of all abilities.&#34;,
+        &#34;logo&#34;: &#34;http://example.com/images/play_ball_logo.svg&#34;,
+        &#34;name&#34;: &#34;Play Ball!&#34;,
+        &#34;url&#34;: &#34;http://example.com/play_ball&#34;
+    },
+    &#34;remainingAttendeeCapacity&#34;: 20,
+    &#34;sameAs&#34;: [
+        &#34;http://www.facebook.com/speedball&#34;,
+        &#34;https://www.twitter.com/speedball&#34;,
+        &#34;http://www.speedball-world.com&#34;
+    ],
+    &#34;schedule&#34;: &#34;TODO&#34;,
+    &#34;startDate&#34;: &#34;2018-01-27T12:00:00Z&#34;,
+    &#34;type&#34;: &#34;Event&#34;,
+    &#34;url&#34;: &#34;https://example.com/events/1234&#34;,
+    &#34;waitingListCount&#34;: 10
+}</code></pre>
+</div>
+
+</div>
+
+    </main><!-- /.container -->
+    
+  <link rel="stylesheet" href="../static/styles/googlecode.css">
+  <script src="../static/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  </body>
+</html>
